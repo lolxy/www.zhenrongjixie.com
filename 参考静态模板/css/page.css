@@ -1,0 +1,33 @@
+﻿/* 分页样式1，针对分页类，可适当调整 */
+.page_style {text-align:center; font-size:12px; line-height:20px; font-family:Arial;}
+.page_style a,.page_style a:link,.page_style a:visited {color:#616161; text-decoration:none; outline:0 none;}
+.page_style a:hover {color:#FF5A00; text-decoration:none;}
+.page_style a,.page_style .current {border:solid 1px #CECECE; padding:0 7px; display:inline-block; vertical-align:middle; background:#FFF;}
+.page_style .current {color:#FF5A00;}
+
+/* 分页样式2，针对base里的分页方法（包括内容分页） */
+.page { padding:10px 0px;font-size:12px;}
+.page ul { margin:0px; padding:0px; text-align:center;}
+.page ul li { display:inline; text-align:center;}
+.page ul li a,.page ul li span,.page ul li span.pageinfo { display:inline-block; margin: 0; padding: 0 8px; height: 20px; color: #616161; border: 1px solid #CECECE; text-align: center; line-height: 20px;}
+/*.page ul li span { color:#FF5A00;}*/
+.page ul li a:hover { color:#FF5A00;}
+.page ul li .current { color:#FF5A00;}
+
+.pager_pro > a{
+	     border:solid 1px #CCCCCC;
+		 padding:5px 13px;
+		 
+		 font-family:"微软雅黑";}
+		 
+.current{
+	  background:#3671ad;
+	  padding-left:15px;
+	  padding-right:13px;
+	  color:#FFF;
+	  }
+	  
+	  
+.pager_pro > a:hover{
+	      background:#3671ad;
+		  color:#FFF; }	
