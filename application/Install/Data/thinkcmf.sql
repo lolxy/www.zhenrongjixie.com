@@ -653,7 +653,7 @@ CREATE TABLE IF NOT EXISTS `cmf_posts` (
   `post_modified` datetime DEFAULT '2000-01-01 00:00:00' COMMENT 'post更新时间，可在前台修改，显示给用户',
   `post_content_filtered` longtext,
   `post_parent` bigint(20) unsigned DEFAULT '0' COMMENT 'post的父级post id,表示post层级关系',
-  `post_type` int(2) DEFAULT '1' COMMENT 'post类型，1资讯,3作品,2页面',
+  `post_type` int(2) DEFAULT '1' COMMENT 'post类型，1文章,2页面',
   `post_mime_type` varchar(100) DEFAULT '',
   `comment_count` bigint(20) DEFAULT '0',
   `smeta` text COMMENT 'post的扩展字段，保存相关扩展属性，如缩略图；格式为json',
@@ -829,6 +829,21 @@ CREATE TABLE IF NOT EXISTS `cmf_user_favorites` (
   `object_id` int(11) DEFAULT NULL COMMENT '收藏内容原来的主键id',
   `createtime` int(11) DEFAULT NULL COMMENT '收藏时间'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='用户收藏表';
+
+--
+-- 表的结构 `cmf_user_favorites`
+--
+
+CREATE TABLE IF NOT EXISTS `cmf_variable` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '变量ID',
+  `variableName` varchar(255) NOT NULL COMMENT '变量名',
+  `variableValue` varchar(255) DEFAULT NULL COMMENT '变量值',
+  `beizhu` varchar(255) DEFAULT NULL COMMENT '备注说明',
+  `listorder` int(11) NOT NULL DEFAULT '0' COMMENT '排序',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `variableName` (`variableName`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+
 
 --
 -- Indexes for dumped tables
