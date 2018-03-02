@@ -1,8 +1,6 @@
 ﻿@charset "utf-8";
 /* CSS Document */
-
-
-
+html,body{padding: 0;margin: 0;}
 /*-----------公共样式-----------------*/
 
 #top{width:100%;margin:20px auto;}
@@ -13,12 +11,11 @@
 	
 .heard_r{float:right;width:340px;}	
 	
-.phone_top{width:307px;margin-top:10px;float:left;margin-left:50px;}	
+.phone_top{width:307px;margin-top:10px;float:left;margin-left:50px;overflow: hidden;}	
 	
-.phone_heard{    background:url("../images/phone.png") no-repeat scroll -1px -1PX rgba(0, 0, 0, 0);
-    float:left;padding-left:8px;
-    
-	}
+.phone_heard{
+	background:url("../images/phone.png") no-repeat scroll -1px -1PX rgba(0, 0, 0, 0);
+    float:right;padding-left:8px;}
 	
 .phone_heard span{padding-left:15px;color:#666666;}	
 
@@ -63,7 +60,7 @@
 /*--------公共--search--------------------*/	
 	
 	
-.search_box {float:left;width:223px;height:22px;border:solid 1px #195ea4;border-radius:10px;padding-left:3px;display:inline;margin-top:9px;margin-left:108px;
+.search_box {float:left;width:223px;height:22px;border:solid 1px #195ea4;border-radius:10px;padding-left:3px;display:inline;margin-bottom:9px;margin-left:108px;
 }
 
 .search {width:282px;margin:0px;line-height:34px;height:22px;padding-left:6px;
@@ -148,7 +145,7 @@
 
 #footer{width:100%;margin:0px auto;background:rgba(13,13,13,1);}
 	
-.footer_con{width:1110px;margin:0px auto;}	
+.footer_con{width:1110px;margin:0px auto;overflow: hidden;}	
 	
 .footer_logo	{float:left;width:135px;margin:10px;}
 	
@@ -517,15 +514,9 @@
 .inner:hover .tuwenbt {top:70%;}
 .inner:hover .mar {margin-top:50px;}	   
 	
-		
-	
-	
-	
-	
-	
 /*---------------contact--------------------*/	
 
-.contact_warp{width:100%;margin:0px auto;background:url(../images/contact_warp.jpg) no-repeat;}
+.contact_warp{width:100%;margin:0px auto;background:url(../images/contact_warp.jpg) no-repeat;background-size:cover;}
 	
 			
 .contact{width:1110px;margin:0px auto;}	
@@ -667,7 +658,7 @@ background:transparent;
 /*----------------内页CSS样式共用------------------*/
 
 
-#warp_main{width:100%;margin:0px auto; background: #f9f9f9;}
+#warp_main{width:100%;margin:0px auto; background: #f9f9f9;overflow: hidden;}
 	
 	
 .main_banner{width:100%;margin:0px auto;}	
@@ -884,9 +875,9 @@ background:transparent;
 #example-one {margin:0px 0px;
 
 }
-#example-one .nav {background:#FFF;overflow:hidden;float:left;margin-top:20px;width:1110px;
+#example-one .nav {background:#FFF;overflow:hidden;float:left;margin-top:20px;width:1110px;padding: 0px 6px;margin-bottom: 15px;
 }
-#example-one .nav li { width:221px;float:left; height:50px; overflow:hidden; border-bottom:6px solid #f9f9f9; 
+#example-one .nav li { width:221px;float:left; height:50px; overflow:hidden; margin-bottom:6px;margin-top: 6px; 
 }
 #example-one .nav li.last {margin-right:0;
 }

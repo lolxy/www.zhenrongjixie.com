@@ -1,31 +1,15 @@
-<br>
-<br>
-<br>
-<!-- Footer ================================================== -->
-<hr>
 {:hook('footer')}
 <div id="footer">
-	<div class="links">
-		<php>$links=sp_getlinks();</php>
-		<foreach name="links" item="vo">
-			<notempty name="vo.link_image">
-				<!-- <img src="{:sp_get_image_url($vo['link_image'])}"> --><!-- 如果想加个友链图片可以取消注释 -->
-			</notempty>
-			<a href="{$vo.link_url}" target="{$vo.link_target}">{$vo.link_name}</a>
-		</foreach>
-	</div>
-	<p>
-		Made by <a href="http://www.thinkcmf.com" target="_blank">ThinkCMF</a>
-		Code licensed under the 
-		<a href="http://www.apache.org/licenses/LICENSE-2.0" rel="nofollow" target="_blank">Apache License v2.0</a>.
-		<br />
-		Based on 
-		<a href="http://getbootstrap.com/2.3.2/" target="_blank">Bootstrap</a>.
-		Icons from 
-		<a href="http://fortawesome.github.com/Font-Awesome/" target="_blank">Font Awesome</a>
-	</p>
+  <div class="footer_con clearfix">
+    <div class="footer_logo"><img src="__TMPL__Public/assets/picture/footer_logo.png"/></div>
+    <div class="footer_r">
+      <p>版权所有 浙江省建德市输送机械设备有限公司</p>
+      <p>Copyright © 2018 http://www.zhenrongjixie.com/ All Rights Reserved {$site_icp}</p>
+      <p>网站制作及维护：<a href="www.ftde360.com" target="_blank">方头大耳</a>●领先的企业互联网应用方案提供商</p>
+    </div>
+  </div>
 </div>
-<div id="backtotop">
-	<i class="fa fa-arrow-circle-up"></i>
+<div id="backtotop"> 
+	<i class="fa fa-arrow-circle-up"></i> 
 </div>
-{$site_tongji}
+{$site_tongji} 
