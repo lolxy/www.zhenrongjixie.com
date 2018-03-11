@@ -1,11 +1,11 @@
 {:hook('body_start')}
 <div id="top">
    <div class="t_heard">
-        <div class="logo"><a href="/"><img src="__TMPL__Public/assets/picture/logo.png"/></a></div>
+        <div class="logo"><a href="/"><img src="{:sp_get_image_url($site_logo)}"/></a></div>
         <div class="heard_r">
              <div class="phone_top clearfix"> 
                   <div class="phone_heard">
-                   <span>热线电话：0571-64116601</span>
+                   <span>热线电话：{$hotTell}</span>
                    <span></span>
                   </div> 
               <!--<dl class="select_lag"> 

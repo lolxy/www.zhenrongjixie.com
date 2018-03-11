@@ -31,7 +31,7 @@ $(function(){
 <tc_include file="Public:nav" />
 
 <php>
-$home_slides=sp_getslide("portal_index");
+$home_slides=sp_getslide("indexSlider");
 $home_slides=empty($home_slides)?$default_home_slides:$home_slides;
 </php>
 
@@ -274,7 +274,7 @@ NSE系列高速板链斗式提升机是我公司引进国外同类产品先进�
         <input type="text" name="email" placeholder="请输入您的E-mail" required="" class="infos" id="name" />
        </div> 
        <div class="message">
-        <textarea required="" name="tel" tabindex="5"  placeholder="请输入您的留言信息" style="color:#fff;"></textarea>
+        <textarea required name="tel" tabindex="5"  placeholder="请输入您的留言信息" style="color:#fff;"></textarea>
        </div> 
        <div class="submit">
         <input id="contact-submit" type="submit" name="submit" value="提交" />
