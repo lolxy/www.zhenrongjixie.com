@@ -17,11 +17,11 @@
 <body>
 	<div class="wrap js-check-wrap">
 		<ul class="nav nav-tabs">
-			<li><a href="{:U('AdminPost/index')}">{:L('PORTAL_ADMINPOST_INDEX')}</a></li>
-			<li class="active"><a href="{:U('AdminPost/add',array('term'=>empty($term['term_id'])?'':$term['term_id']))}" target="_self">{:L('PORTAL_ADMINPOST_ADD')}</a></li>
+			<li><a href="{:U('AdminProduct/index')}">{:L('PORTAL_ADMINPRODUCT_INDEX')}</a></li>
+			<li class="active"><a href="{:U('AdminProduct/add',array('term'=>empty($term['term_id'])?'':$term['term_id']))}" target="_self">{:L('PORTAL_ADMINPRODUCT_ADD')}</a></li>
 		</ul>
-		<form action="{:U('AdminPost/add_post')}" method="post" class="form-horizontal js-ajax-forms" enctype="multipart/form-data">
-        <input type="hidden" name="post[post_type]" value="1">
+		<form action="{:U('AdminProduct/add_post')}" method="post" class="form-horizontal js-ajax-forms" enctype="multipart/form-data">
+        <input type="hidden" name="post[post_type]" value="3">
 			<div class="row-fluid">
 				<div class="span9">
 					<table class="table table-bordered">
@@ -133,7 +133,7 @@
 			</div>
 			<div class="form-actions">
 				<button class="btn btn-primary js-ajax-submit" type="submit">提交</button>
-				<a class="btn" href="{:U('AdminPost/index')}">返回</a>
+				<a class="btn" href="{:U('AdminProduct/index')}">返回</a>
 			</div>
 		</form>
 	</div>
@@ -287,7 +287,7 @@
 											}, {
 												name : '返回列表页',
 												callback : function() {
-													location = "{:U('AdminPost/index')}";
+													location = "{:U('AdminProduct/index')}";
 													return true;
 												}
 											} ]
