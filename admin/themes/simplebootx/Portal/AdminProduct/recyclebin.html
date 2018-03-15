@@ -41,7 +41,7 @@
 				$top_status=array("1"=>"已置顶","0"=>"未置顶");
 				$recommend_status=array("1"=>"已推荐","0"=>"未推荐");
 				</php>
-				<foreach name="posts" item="vo">
+				<foreach name="product" item="vo">
 				<tr>
 					<td><input type="checkbox" class="js-check" data-yid="js-check-y" data-xid="js-check-x" name="ids[{$vo.id}]" value="{$vo.id}"></td>
 					<td><b>{$vo.id}</b></td>

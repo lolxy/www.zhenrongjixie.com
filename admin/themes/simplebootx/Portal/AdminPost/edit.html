@@ -66,7 +66,7 @@
 								<script type="text/plain" id="content" name="post[post_content]">{$post.post_content}</script>
 							</td>
 						</tr>
-						<tr>
+						<!--<tr>
 							<th>相册图集</th>
 							<td>
 								<ul id="photos" class="pic-list unstyled">
@@ -85,7 +85,7 @@
 								</ul>
 								<a href="javascript:upload_multi_image('图片上传','#photos','photos-item-wrapper');" class="btn btn-small">选择图片</a>
 							</td>
-						</tr>
+						</tr>-->
 					</table>
 				</div>
 				<div class="span3">
@@ -114,13 +114,13 @@
 						<tr>
 							<td><input type="text" name="post[post_date]" value="{$post.post_date}" class="js-datetime" style="width: 160px;"></td>
 						</tr>
-						<tr>
+						<!--<tr>
 							<th>评论</th>
 						</tr>
 						<tr>
 							<td><label style="width: 88px"><a href="javascript:open_iframe_dialog('{:U('comment/commentadmin/index',array('post_id'=>$post['id']))}','评论列表')">查看评论</a></label>
 							</td>
-						</tr>
+						</tr>-->
 						<tr>
 							<th>状态</th>
 						</tr>
@@ -150,7 +150,7 @@
 								<label class="radio"><input type="radio" name="post[recommended]" value="0" {$recommended_no}>未推荐</label>
 							</td>
 						</tr>
-						<tr>
+						<!--<tr>
 							<th>文章模板</th>
 						</tr>
 						<tr>
@@ -167,7 +167,7 @@
 									</foreach>
 								</select>
 							</td>
-						</tr>
+						</tr>-->
 					</table>
 				</div>
 			</div>

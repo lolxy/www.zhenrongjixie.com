@@ -145,7 +145,7 @@ class AdminProductController extends AdminbaseController {
 	private function _lists($where=array()){
 		$term_id=I('request.term',0,'intval');
 		
-		$where['post_type']=array(array('eq',3));
+		$where['post_type']=array('eq',3);
 		
 		if(!empty($term_id)){
 		    $where['b.term_id']=$term_id;
@@ -355,6 +355,7 @@ class AdminProductController extends AdminbaseController {
 			            $find_relation_count=$this->term_relationships_model->where(array('object_id'=>$id,'term_id'=>$term_id))->count();
 			            if($find_relation_count==0){
 			                $this->term_relationships_model->add(array('object_id'=>$id,'term_id'=>$term_id));
+							$this->product_model->save(array('id'=>$id,'post_type'=>1));
 			            }
 			        }
 			        
@@ -401,6 +402,7 @@ class AdminProductController extends AdminbaseController {
 	                $find_post=$this->product_model->field('post_keywords,post_source,post_content,post_title,post_excerpt,smeta')->where(array('id'=>$id))->find();
 	                if($find_post){
 	                    $find_post['post_author']=$uid;
+						$find_post['post_type']=3;
 	                    $find_post['post_date']=date('Y-m-d H:i:s');
 	                    $find_post['post_modified']=date('Y-m-d H:i:s');
 	                    $post_id=$this->product_model->add($find_post);

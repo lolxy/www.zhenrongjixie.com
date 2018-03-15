@@ -5,299 +5,237 @@
 <meta name="keywords" content="{$site_seo_keywords}" />
 <meta name="description" content="{$site_seo_description}">
 <tc_include file="Public:head" />
-<script type="text/javascript" src="__TMPL__Public/assets/js/jquery-1.7.min.js"></script> 
-<script type="text/javascript">
-$(function(){
-	/*============================
-	@author:flc
-	@time:2014-02-11 18:16:09
-	@qq:3407725
-	============================*/
-	$(".select_lag").each(function(){
-		var s=$(this);
-		var z=parseInt(s.css("z-index"));
-		var dt=$(this).children("dt");
-		var dd=$(this).children("dd");
-		var _show=function(){dd.slideDown(200);dt.addClass("cur");s.css("z-index",z+1);};   //展开效果
-		var _hide=function(){dd.slideUp(200);dt.removeClass("cur");s.css("z-index",z);};    //关闭效果
-		dt.click(function(){dd.is(":hidden")?_show():_hide();});
-		dd.find("a").click(function(){dt.html($(this).html());_hide();});     //选择效果（如需要传值，可自定义参数，在此处返回对应的“value”值 ）
-		$("body").click(function(i){!$(i.target).parents(".select_lag").first().is(s) ? _hide():"";});
-	})
-})
-</script> 
+<script type="text/javascript" src="__TMPL__Public/assets/js/jquery-1.7.min.js"></script>
 </head>
 <body class="body-white">
 <tc_include file="Public:nav" />
-
-<php>
-$home_slides=sp_getslide("indexSlider");
-$home_slides=empty($home_slides)?$default_home_slides:$home_slides;
-</php>
-
-<div class="clear"></div> 
-   
-  <div id="banner"> 
-   <div class="container-fluid text-center"> 
-    <div class="header"> 
-     <div class="slideshow" id="slideshow-container-0" style="height: 680px; width: 1920px; -moz-user-select: none;"> 
-      <div class="leftBtn slideBtn hide1"> 
-       <span class="pointer previous"></span> 
-      </div> 
-      <div class="rightBtn slideBtn hide1"> 
-      <span class="pointer next"></span> 
-      </div> 
-      <foreach name="home_slides" item="vo" key="k">
-      	<if condition="$k == 0">
-        	<div style="background-image: url({:sp_get_asset_upload_path($vo['slide_pic'])});display:block;" index="{$k}" class="slide"></div> 
-        <else/>
-        	<div style="background-image: url({:sp_get_asset_upload_path($vo['slide_pic'])});display:none;" index="{$k}" class="slide"></div> 
-        </if>
-      </foreach>		   			 		   
-     </div> 
-    </div> 
-   </div> 
-  </div> 
-
-
-   
-  <div id="index_main"> 
-   <div class="product"> 
-    <div class="scroll_outer"> 
-	 <div class="scrollcon">
-		<div class="LeftBotton" onmousedown="ISL_GoUp()" onmouseup="ISL_StopUp()" onmouseout="ISL_StopUp()"></div>
-		<div class="Cont" id="ISL_Cont">
-			<div class="ScrCont">
-                <div id="List1">
-				 
-				<div class="pic">
-                    <div class="pic_nr">
-                    <img src="__TMPL__Public/assets/picture/20150521170234555d9f2a2dde4.jpg" alt="NE板链式提升机" />
-                    <div class="shd"><a href="/product_deta/id-2.html"></a></div>
-                    <div class="txt"><h3><a href="/product_deta/id-2.html">NE板链式提升机</a></h3>
+<php> $home_slides=sp_getslide("indexSlider");
+  $home_slides=empty($home_slides)?$default_home_slides:$home_slides; </php>
+<div class="clear"></div>
+<div id="banner">
+  <div class="container-fluid text-center">
+    <div class="header">
+      <div class="slideshow" id="slideshow-container-0" style="height: 680px; width: 1920px; -moz-user-select: none;">
+        <div class="leftBtn slideBtn hide1"> <span class="pointer previous"></span> </div>
+        <div class="rightBtn slideBtn hide1"> <span class="pointer next"></span> </div>
+        <foreach name="home_slides" item="vo" key="k">
+          <if condition="$k == 0">
+            <div style="background-image: url({:sp_get_asset_upload_path($vo['slide_pic'])});display:block;" index="{$k}" class="slide"></div>
+            <else/>
+            <div style="background-image: url({:sp_get_asset_upload_path($vo['slide_pic'])});display:none;" index="{$k}" class="slide"></div>
+          </if>
+        </foreach>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="index_main">
+  <div class="product">
+    <div class="scroll_outer">
+      <div class="scrollcon">
+        <div class="LeftBotton" onmousedown="ISL_GoUp()" onmouseup="ISL_StopUp()" onmouseout="ISL_StopUp()"></div>
+        <div class="Cont" id="ISL_Cont">
+          <div class="ScrCont">
+            <div id="List1">
+              <div class="pic">
+                <div class="pic_nr"> <img src="__TMPL__Public/assets/picture/20150521170234555d9f2a2dde4.jpg" alt="NE板链式提升机" />
+                  <div class="shd"><a href="/product_deta/id-2.html"></a></div>
+                  <div class="txt">
+                    <h3><a href="/product_deta/id-2.html">NE板链式提升机</a></h3>
                     <p>1.概述
-TB-NE系列板链式提升机(以下称NE系列板链式提升机)是本公司引进国外同类产品先...</p>
-                    </div>
-                    </div>
+                      TB-NE系列板链式提升机(以下称NE系列板链式提升机)是本公司引进国外同类产品先...</p>
+                  </div>
                 </div>
-				 
-				<div class="pic">
-                    <div class="pic_nr">
-                    <img src="__TMPL__Public/assets/picture/20150522102450555e9372abc0e.jpg" alt="NSE高速板链提升机" />
-                    <div class="shd"><a href="/product_deta/id-4.html"></a></div>
-                    <div class="txt"><h3><a href="/product_deta/id-4.html">NSE高速板链提升机</a></h3>
+              </div>
+              <div class="pic">
+                <div class="pic_nr"> <img src="__TMPL__Public/assets/picture/20150522102450555e9372abc0e.jpg" alt="NSE高速板链提升机" />
+                  <div class="shd"><a href="/product_deta/id-4.html"></a></div>
+                  <div class="txt">
+                    <h3><a href="/product_deta/id-4.html">NSE高速板链提升机</a></h3>
                     <p>概述
-NSE系列高速板链斗式提升机是我公司引进国外同类产品先进技术开发的一种新型垂直...</p>
-                    </div>
-                    </div>
+                      NSE系列高速板链斗式提升机是我公司引进国外同类产品先进技术开发的一种新型垂直...</p>
+                  </div>
                 </div>
-				 
-				<div class="pic">
-                    <div class="pic_nr">
-                    <img src="__TMPL__Public/assets/picture/20150521180610555dae1250335.jpg" alt="FU链运机" />
-                    <div class="shd"><a href="/product_deta/id-3.html"></a></div>
-                    <div class="txt"><h3><a href="/product_deta/id-3.html">FU链运机</a></h3>
+              </div>
+              <div class="pic">
+                <div class="pic_nr"> <img src="__TMPL__Public/assets/picture/20150521180610555dae1250335.jpg" alt="FU链运机" />
+                  <div class="shd"><a href="/product_deta/id-3.html"></a></div>
+                  <div class="txt">
+                    <h3><a href="/product_deta/id-3.html">FU链运机</a></h3>
                     <p>一、主要特点：
-1.输送能力大。输送能力达6m ³/h-500m ³/h。
-2.输送能耗低。与螺旋输...</p>
-                    </div>
-                    </div>
+                      1.输送能力大。输送能力达6m ³/h-500m ³/h。
+                      2.输送能耗低。与螺旋输...</p>
+                  </div>
                 </div>
-				 
-				<div class="pic">
-                    <div class="pic_nr">
-                    <img src="__TMPL__Public/assets/picture/20150522112010555ea06a2dde4.jpg" alt="TGD钢丝胶带提升机" />
-                    <div class="shd"><a href="/product_deta/id-8.html"></a></div>
-                    <div class="txt"><h3><a href="/product_deta/id-8.html">TGD钢丝胶带提升机</a></h3>
+              </div>
+              <div class="pic">
+                <div class="pic_nr"> <img src="__TMPL__Public/assets/picture/20150522112010555ea06a2dde4.jpg" alt="TGD钢丝胶带提升机" />
+                  <div class="shd"><a href="/product_deta/id-8.html"></a></div>
+                  <div class="txt">
+                    <h3><a href="/product_deta/id-8.html">TGD钢丝胶带提升机</a></h3>
                     <p>N-TGD钢丝胶带斗式提升机（以下简称TGD）具有输送量大、体积小、功耗低、运行平稳可靠、使...</p>
-                    </div>
-                    </div>
+                  </div>
                 </div>
-				 
-				<div class="pic">
-                    <div class="pic_nr">
-                    <img src="__TMPL__Public/assets/picture/20150521163342555d986607b8a.jpg" alt="BL板式喂料机" />
-                    <div class="shd"><a href="/product_deta/id-1.html"></a></div>
-                    <div class="txt"><h3><a href="/product_deta/id-1.html">BL板式喂料机</a></h3>
+              </div>
+              <div class="pic">
+                <div class="pic_nr"> <img src="__TMPL__Public/assets/picture/20150521163342555d986607b8a.jpg" alt="BL板式喂料机" />
+                  <div class="shd"><a href="/product_deta/id-1.html"></a></div>
+                  <div class="txt">
+                    <h3><a href="/product_deta/id-1.html">BL板式喂料机</a></h3>
                     <p>1.1板式喂料机适用于沿水平或倾斜的线段由贮料仓向破碎机或其它工作机械连续均匀地配...</p>
-                    </div>
-                    </div>
+                  </div>
                 </div>
-				 
-				<div class="pic">
-                    <div class="pic_nr">
-                    <img src="__TMPL__Public/assets/picture/20150522110525555e9cf5ec9a6.jpg" alt="LD系列高温料不锈钢输送机" />
-                    <div class="shd"><a href="/product_deta/id-5.html"></a></div>
-                    <div class="txt"><h3><a href="/product_deta/id-5.html">LD系列高温料不锈钢输送...</a></h3>
+              </div>
+              <div class="pic">
+                <div class="pic_nr"> <img src="__TMPL__Public/assets/picture/20150522110525555e9cf5ec9a6.jpg" alt="LD系列高温料不锈钢输送机" />
+                  <div class="shd"><a href="/product_deta/id-5.html"></a></div>
+                  <div class="txt">
+                    <h3><a href="/product_deta/id-5.html">LD系列高温料不锈钢输送...</a></h3>
                     <p>一、主要特点：
-1.提升范围广。提升机对物体的种类、特性及块度的要求少，可提升粉状、粒...</p>
-                    </div>
-                    </div>
+                      1.提升范围广。提升机对物体的种类、特性及块度的要求少，可提升粉状、粒...</p>
+                  </div>
                 </div>
-				               
-
+              </div>
+            </div>
+            <div id="List2"></div>
+          </div>
+        </div>
+        <div class="RightBotton" onmousedown="ISL_GoDown()" onmouseup="ISL_StopDown()" onmouseout="ISL_StopDown()"></div>
+      </div>
+    </div>
+    <div class="product_r">
+      <div class="product_warp">
+        <div class="product_warp_tit"> <img src="__TMPL__Public/assets/picture/product_tit.png" /> </div>
+        <div class="product_warp_more"> <a href="/product.html">详情 &gt;</a> </div>
+      </div>
+    </div>
+  </div>
+  <div class="clear"></div>
+  <!--关于我们->-->
+  <div class="about_warp">
+    <div class="about">
+      <div class="about_tit"> <img src="__TMPL__Public/assets/picture/about_tit.png" /> </div>
+      <div class="about_con">
+        <p>
+        <p><span style="font-size: 14px;"><strong><span style="font-family: 微软雅黑, &#39;Microsoft YaHei&#39;;">企业概况</span></strong></span></p>
+        <p><span style="font-family: 微软雅黑, &#39;Microsoft YaHei&#39;; font-size: 14px;">建德市输送机械设备有限公司(隶属浙江省杭州市)座落在风景秀丽的千岛湖畔，320国道临门而过，厂区后面杭新景高速，交通极为便利。公司占地面积4.3万平方米，厂房面积2万平方米。本公司以“科技兴厂，服务大众”为公司经营理念。以科技创新为导向，质量为后盾，诚信为宗旨，为客户提供一流的产品。</span></p>
+        <p><span style="font-family: 微软雅黑, &#39;Microsoft YaHei&#39;; font-size: 14px;">公司创建于1995年，是专业从事输送设备设计和制造的企业，拥有设施先进的科研中心和试验、检测能力，生产条件完善。企业注册资金1280万元。</span></p>
+        </p>
+      </div>
+      <div class="about_more"> <a href="/about.html">详情 &gt;</a> </div>
+    </div>
+  </div>
+  <div class="clear"></div>
+  <!--新闻中心->-->
+  <div class="news_warp">
+    <div class="news">
+      <div class="news_tit"> <img src="__TMPL__Public/assets/picture/news_tit.png" /> </div>
+      <div class="news_con">
+        <div class="new_con_img clearfix">
+          <div class="img_news">
+            <div class="wrap">
+              <div class="fig_con">
+                <div class="inner">
+                  <div class="tu"> <a href="/news_deta/id-8.html"><img src="__TMPL__Public/assets/picture/20150522152016555ed8b0132a5.jpg"></a> </div>
+                  <div class="tuwen">
+                    <div class="tuwenbt">
+                      <p>2015-05-15</p>
+                      <h2><a href="/news_deta/id-8.html">中标内蒙古乌海化工提升输送设备</a></h2>
+                    </div>
+                    <ul class="mar clearfix">
+                      <li><a href="http://v.t.sina.com.cn/share/share.php?url=http://www.shao-ming.com&title='中标内蒙古乌海化工提升输送设备'"><img src="__TMPL__Public/assets/picture/mark_bg.png" /></a></li>
+                      <li><a href="#"><img src="__TMPL__Public/assets/picture/mark_wx.png" /></a></li>
+                      <li><a href="/news_deta/id-8.html"><img src="__TMPL__Public/assets/picture/mark_more.png" /></a></li>
+                    </ul>
+                  </div>
                 </div>
-				<div id="List2"></div>
-			</div>
-		</div>
-		<div class="RightBotton" onmousedown="ISL_GoDown()" onmouseup="ISL_StopDown()" onmouseout="ISL_StopDown()"></div>
-	</div> 
-	
-	
-
-    </div> 
-    <div class="product_r"> 
-     <div class="product_warp"> 
-      <div class="product_warp_tit">
-       <img src="__TMPL__Public/assets/picture/product_tit.png" />
-      </div> 
-      <div class="product_warp_more">
-       <a href="/product.html">详情 &gt;</a>
-      </div> 
-     </div> 
-    </div> 
-   </div> 
-   <div class="clear"></div> 
-   <!--关于我们->--> 
-   <div class="about_warp"> 
-    <div class="about"> 
-     <div class="about_tit">
-      <img src="__TMPL__Public/assets/picture/about_tit.png" />
-     </div> 
-     <div class="about_con"> 
-      <p><p><span style="font-size: 14px;"><strong><span style="font-family: 微软雅黑, &#39;Microsoft YaHei&#39;;">企业概况</span></strong></span></p><p><span style="font-family: 微软雅黑, &#39;Microsoft YaHei&#39;; font-size: 14px;">建德市输送机械设备有限公司(隶属浙江省杭州市)座落在风景秀丽的千岛湖畔，320国道临门而过，厂区后面杭新景高速，交通极为便利。公司占地面积4.3万平方米，厂房面积2万平方米。本公司以“科技兴厂，服务大众”为公司经营理念。以科技创新为导向，质量为后盾，诚信为宗旨，为客户提供一流的产品。</span></p><p><span style="font-family: 微软雅黑, &#39;Microsoft YaHei&#39;; font-size: 14px;">公司创建于1995年，是专业从事输送设备设计和制造的企业，拥有设施先进的科研中心和试验、检测能力，生产条件完善。企业注册资金1280万元。</span></p></p> 
-     </div> 
-     <div class="about_more"> 
-      <a href="/about.html">详情 &gt;</a> 
-     </div> 
-    </div> 
-   </div> 
-   <div class="clear"></div> 
-   <!--新闻中心->--> 
-   <div class="news_warp"> 
-    <div class="news"> 
-     <div class="news_tit">
-      <img src="__TMPL__Public/assets/picture/news_tit.png" />
-     </div> 
-     <div class="news_con"> 
-      <div class="new_con_img clearfix"> 
-	  
-	  
-	  				    					
-						<div class="img_news"> 
-							<div class="wrap"> 
-							 <div class="fig_con">
-							  <div class="inner">
-								<div class="tu"> <a href="/news_deta/id-8.html"><img src="__TMPL__Public/assets/picture/20150522152016555ed8b0132a5.jpg"></a> </div>
-								<div class="tuwen">
-								  <div class="tuwenbt">
-									 <p>2015-05-15</p>
-									 <h2><a href="/news_deta/id-8.html">中标内蒙古乌海化工提升输送设备</a></h2>
-								  </div>
-								  <ul class="mar clearfix">
-									 <li><a href="http://v.t.sina.com.cn/share/share.php?url=http://www.shao-ming.com&title='中标内蒙古乌海化工提升输送设备'"><img src="__TMPL__Public/assets/picture/mark_bg.png" /></a></li> 
-										 <li><a href="#"><img src="__TMPL__Public/assets/picture/mark_wx.png" /></a></li> 
-										 <li><a href="/news_deta/id-8.html"><img src="__TMPL__Public/assets/picture/mark_more.png" /></a></li> 
-								  </ul>
-								</div>
-							  </div>
-							 </div> 
-							</div> 
-						   </div> 
-					 					
-						<div class="img_news2"> 
-							<div class="wrap"> 
-							 <div class="fig_con">
-							  <div class="inner">
-								<div class="tu"> <a href="/news_deta/id-7.html"><img src="__TMPL__Public/assets/picture/20150522141127555ec88f6716c.jpg"></a> </div>
-								<div class="tuwen">
-								  <div class="tuwenbt">
-									 <p>2015-05-15</p>
-									 <h2><a href="/news_deta/id-7.html">本公司新增一台数控加工中心</a></h2>
-								  </div>
-								  <ul class="mar clearfix">
-									 <li><a href="http://v.t.sina.com.cn/share/share.php?url=http://www.shao-ming.com&title='本公司新增一台数控加工中心'"><img src="__TMPL__Public/assets/picture/mark_bg.png" /></a></li> 
-										 <li><a href="#"><img src="__TMPL__Public/assets/picture/mark_wx.png" /></a></li> 
-										 <li><a href="/news_deta/id-7.html"><img src="__TMPL__Public/assets/picture/mark_more.png" /></a></li> 
-								  </ul>
-								</div>
-							  </div>
-							 </div> 
-							</div> 
-						   </div> 
-					 					
-						<div class="img_news2"> 
-							<div class="wrap"> 
-							 <div class="fig_con">
-							  <div class="inner">
-								<div class="tu"> <a href="/news_deta/id-5.html"><img src="__TMPL__Public/assets/picture/20150522160537555ee3512a0dc.jpg"></a> </div>
-								<div class="tuwen">
-								  <div class="tuwenbt">
-									 <p>2015-05-15</p>
-									 <h2><a href="/news_deta/id-5.html">中标宁夏天元锰业2x4500线提升输...</a></h2>
-								  </div>
-								  <ul class="mar clearfix">
-									 <li><a href="http://v.t.sina.com.cn/share/share.php?url=http://www.shao-ming.com&title='中标宁夏天元锰业2x4500线提升输送设备'"><img src="__TMPL__Public/assets/picture/mark_bg.png" /></a></li> 
-										 <li><a href="#"><img src="__TMPL__Public/assets/picture/mark_wx.png" /></a></li> 
-										 <li><a href="/news_deta/id-5.html"><img src="__TMPL__Public/assets/picture/mark_more.png" /></a></li> 
-								  </ul>
-								</div>
-							  </div>
-							 </div> 
-							</div> 
-						   </div> 
-						  
-       
-       
-      </div> 
-     </div> 
-    </div> 
-   </div> 
-   <div class="clear"></div> 
-    
-   <div class="contact_warp"> 
-    <div class="contact"> 
-     <div class="contact_tit">
-      <img src="__TMPL__Public/assets/picture/contact_tit.png" />
-     </div> 
-     <div class="contact_con  clearfix"> 
-      <div class="contact_l clearfix"> 
-	  <form action="/index.html" method="post" >
-	   <input type="hidden" name="act" value="add"  class="infos" id="name">
-       <div class="name_con">
-        <input type="text"  placeholder="请输入标题" required="" class="infos" id="name" />
-       </div> 
-       <div class="email">
-        <input type="text" name="realname" placeholder="请输入您的姓名" required="" class="infos" id="name" />
-       </div> 
-       <div class="email">
-        <input type="text" name="email" placeholder="请输入您的E-mail" required="" class="infos" id="name" />
-       </div> 
-       <div class="message">
-        <textarea required name="tel" tabindex="5"  placeholder="请输入您的留言信息" style="color:#fff;"></textarea>
-       </div> 
-       <div class="submit">
-        <input id="contact-submit" type="submit" name="submit" value="提交" />
-       </div> 
- 
-	       </form> 
-      </div> 
-      <div class="contact_r"> 
-       <div class="contact_con" style="width:500px;"> 
-        <ul> 
-         <li><span class="contact_add"></span><span>浙江省建德市乾潭镇陵上</span></li> 
-         <li><span class="contact_email"></span><span>info@cnjianchi.com</span></li> 
-         <li><span class="contact_phon"></span><span>0571-64116601/64160158</span></li> 
-         <li><span class="contact_fax"></span><span>0571-64116868</span></li> 
-         <li><span class="contact_lx"></span><span>13906818987</span></li> 
-        </ul> 
-       </div> 
-      </div> 
-     </div> 
-    </div> 
-   </div> 
-  </div> 
-
+              </div>
+            </div>
+          </div>
+          <div class="img_news2">
+            <div class="wrap">
+              <div class="fig_con">
+                <div class="inner">
+                  <div class="tu"> <a href="/news_deta/id-7.html"><img src="__TMPL__Public/assets/picture/20150522141127555ec88f6716c.jpg"></a> </div>
+                  <div class="tuwen">
+                    <div class="tuwenbt">
+                      <p>2015-05-15</p>
+                      <h2><a href="/news_deta/id-7.html">本公司新增一台数控加工中心</a></h2>
+                    </div>
+                    <ul class="mar clearfix">
+                      <li><a href="http://v.t.sina.com.cn/share/share.php?url=http://www.shao-ming.com&title='本公司新增一台数控加工中心'"><img src="__TMPL__Public/assets/picture/mark_bg.png" /></a></li>
+                      <li><a href="#"><img src="__TMPL__Public/assets/picture/mark_wx.png" /></a></li>
+                      <li><a href="/news_deta/id-7.html"><img src="__TMPL__Public/assets/picture/mark_more.png" /></a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="img_news2">
+            <div class="wrap">
+              <div class="fig_con">
+                <div class="inner">
+                  <div class="tu"> <a href="/news_deta/id-5.html"><img src="__TMPL__Public/assets/picture/20150522160537555ee3512a0dc.jpg"></a> </div>
+                  <div class="tuwen">
+                    <div class="tuwenbt">
+                      <p>2015-05-15</p>
+                      <h2><a href="/news_deta/id-5.html">中标宁夏天元锰业2x4500线提升输...</a></h2>
+                    </div>
+                    <ul class="mar clearfix">
+                      <li><a href="http://v.t.sina.com.cn/share/share.php?url=http://www.shao-ming.com&title='中标宁夏天元锰业2x4500线提升输送设备'"><img src="__TMPL__Public/assets/picture/mark_bg.png" /></a></li>
+                      <li><a href="#"><img src="__TMPL__Public/assets/picture/mark_wx.png" /></a></li>
+                      <li><a href="/news_deta/id-5.html"><img src="__TMPL__Public/assets/picture/mark_more.png" /></a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="clear"></div>
+  <div class="contact_warp">
+    <div class="contact">
+      <div class="contact_tit"> <img src="__TMPL__Public/assets/picture/contact_tit.png" /> </div>
+      <div class="contact_con  clearfix">
+        <div class="contact_l clearfix">
+          <form action="/index.html" method="post" >
+            <input type="hidden" name="act" value="add"  class="infos" id="name">
+            <div class="name_con">
+              <input type="text"  placeholder="请输入标题" required="" class="infos" id="name" />
+            </div>
+            <div class="email">
+              <input type="text" name="realname" placeholder="请输入您的姓名" required="" class="infos" id="name" />
+            </div>
+            <div class="email">
+              <input type="text" name="email" placeholder="请输入您的E-mail" required="" class="infos" id="name" />
+            </div>
+            <div class="message">
+              <textarea required name="tel" tabindex="5"  placeholder="请输入您的留言信息" style="color:#fff;"></textarea>
+            </div>
+            <div class="submit">
+              <input id="contact-submit" type="submit" name="submit" value="提交" />
+            </div>
+          </form>
+        </div>
+        <div class="contact_r">
+          <div class="contact_con" style="width:500px;">
+            <ul>
+              <li><span class="contact_add"></span><span>{$address}</span></li>
+              <li><span class="contact_email"></span><span>{$email}</span></li>
+              <li><span class="contact_phon"></span><span>{$hotTell}/{$tell}</span></li>
+              <li><span class="contact_fax"></span><span>{$fax}</span></li>
+              <li><span class="contact_lx"></span><span>{$mobilePhone}</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <tc_include file="Public:footer"/>
 <tc_include file="Public:scripts"/>
 {:hook('footer_end')}

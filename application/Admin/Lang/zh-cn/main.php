@@ -2,7 +2,7 @@
 return array(
 	'SYSTEM_INFORMATIONS' => '系统信息',
 	'SYSTEM_NOTIFICATIONS' => '系统通知',
-	'INITIATE_TEAM' => '发起团队',
+	'INITIATE_TEAM' => '联系信息',
 	'CONTRIBUTORS' => '贡献者',
 	'CONTACT_EMAIL' => '联系邮箱',
 	'TEAM_MEMBERS' => '团队成员',
