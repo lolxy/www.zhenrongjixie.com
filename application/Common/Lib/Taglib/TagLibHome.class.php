@@ -1,5 +1,5 @@
 <?php
-namespace Common\Lib\TagLib;
+namespace Common\Lib\TagLib;
 use Think\Template\TagLib;
 class TagLibHome extends TagLib {
 

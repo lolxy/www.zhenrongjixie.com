@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="add.html" server="qxu1193810144.my3w.com//htdocs/" local="131655123181222841" remote="131655123000000000" Dst="0" />
-<file name="edit.html" server="qxu1193810144.my3w.com//htdocs/" local="131655123333718269" remote="131655123000000000" Dst="0" />
-<file name="index.html" server="qxu1193810144.my3w.com//htdocs/" local="131652526488243619" remote="131652526200000000" Dst="0" />
-<file name="recyclebin.html" server="qxu1193810144.my3w.com//htdocs/" local="131652528733093071" remote="131652528600000000" Dst="0" />
+<file name="copy.html" server="qxu1193810144.my3w.com//htdocs/" local="131657761459034742" remote="131230080000000000" Dst="0" />
+<file name="add.html" server="qxu1193810144.my3w.com//htdocs/" local="131657761459054817" remote="131655123000000000" Dst="0" />
+<file name="edit.html" server="qxu1193810144.my3w.com//htdocs/" local="131657761461030052" remote="131655123000000000" Dst="0" />
+<file name="index.html" server="qxu1193810144.my3w.com//htdocs/" local="131657761462233252" remote="131652526200000000" Dst="0" />
+<file name="move.html" server="qxu1193810144.my3w.com//htdocs/" local="131657761462263345" remote="131230080000000000" Dst="0" />
+<file name="recyclebin.html" server="qxu1193810144.my3w.com//htdocs/" local="131657761464168483" remote="131652528600000000" Dst="0" />
 </dwsync>

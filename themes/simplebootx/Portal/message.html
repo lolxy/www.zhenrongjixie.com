@@ -6,9 +6,8 @@
 <meta name="keywords" content="{$site_seo_keywords}" />
 <meta name="description" content="{$site_seo_description}">
 <tc_include file="Public:head" />
-
+<link href="__TMPL__Public/assets/css/layer.css" rel="stylesheet"/>
 <script src="http://api.map.baidu.com/api?v=1.3"></script>
-
 <style>
 img {
 	max-width: none;
@@ -16,102 +15,123 @@ img {
 </style>
 </head>
 <body class="body-white">
-	<tc_include file="Public:nav" />
-
-<div class="clear"></div> 
-   
-  <div id="warp_main"> 
-   <div class="main_banner"> 
-        <img src="__TMPL__Public/assets/picture/201505151546445555a464ac691.jpg" /> 
-	   </div> 
-    
-   <div class="main_contact">
-   
-   <div class="main_con_tit"> 
-    <div class="main_tit clearfix"> 
-     <div class="main_tit_l"> 
-      <span>在线留言 / </span>
-      <span class="pro_tit">MESSAGE</span> 
-     </div> 
-     <div class="main_tit_r clearfix"> 
-	  <div class="home_tit"> 
-       <span class="home">当前位置：</span> 
-       <ul> 
-        <li class="h"><a href="/">首页</a> </li> 
-        <li><a href="/contact.html">联系我们</a></li> 
-        <li><a href="/message.html">在线留言</a></li> 
-       </ul> 
-      </div> 
-     </div> 
-    </div> 
-   </div>
-   
-   <div style="width:1110px; margin:0px auto; overflow:hidden;"> 
-     <div id="example-one"> 
-		 <ul class="nav"> 
-	         <li class="nav-one"><a href="/contact.html">联系我们</a></li> 
-	          <li class="nav-one"><a href="/message.html" class="current">在线留言</a></li> 
-	         </ul>
-	  </div></div>
-    
-    <div class="warp_contact_con clearfix"> 
+<tc_include file="Public:nav" />
+<div class="clear"></div>
+<div id="warp_main">
+  <php>
+$slides=sp_getslide("message_ads");
+</php>
+<div class="main_banner">
+<foreach name="slides" item="vo" key="k">
+	<if condition="$k == 0">
+    <img src="{:sp_get_asset_upload_path($vo['slide_pic'])}" alt="">
+    </if>
+</foreach>
+</div>
+<div class="main_contact">
+  <div class="main_con_tit">
+    <div class="main_tit">
+      <div class="main_tit_l"> <span>在线留言 / </span> <span class="pro_tit">MESSAGE</span> </div>
+      <div class="main_tit_r">
+        <div class="home_tit"> <span class="home">当前位置：</span>
+          <ul>
+            <li class="h"><a href="/">首页</a> </li>
+            <li>在线留言</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="width:1110px; margin:0px auto; overflow:hidden;">
+    <div id="example-one">
+      <ul class="nav">
+        <li class="nav-one"><a href="{:leuu('page/index',array('id'=>5))}"      
+          
+          <if condition="$id == 5">class="current"</if>
+          >联系我们</a></li>
+        <li class="nav-one"><a href="{:leuu('page/index',array('id'=>4))}"      
+          
+          <if condition="$id == 4">class="current"</if>
+          >在线留言</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="warp_contact_con clearfix">
     <div class="contact_box clearfix">
-<style>
+      <style>
 .zxly{text-align:center; font-size:18px; font-weight:bold; color:#636363;}
 .mtab{width:774px; margin:0 auto; color:#636363; padding-top:34px;}
 .mtab td{padding-bottom:26px; line-height:34px;}
-.linp1{}
-.linp1 input{width:290px; height:34px; border:1px solid #c7c7c7; border-radius:4px; background-color:#f5f5f5; color:#636363;}
+.linp1 input{width:290px; height:34px; border:1px solid #c7c7c7; border-radius:4px; background-color:#f5f5f5; color:#636363;padding: 0 10px;}
 .tsub{padding-right:30px;}
-.text{}
-.text textarea{width:672px; height:140px; border:1px solid #c7c7c7; border-radius:4px; background-color:#f5f5f5; color:#636363;}
-.yzm{}
-.yzm input{width:140px; height:34px; border:1px solid #c7c7c7; border-radius:4px; background-color:#f5f5f5; float:left; margin-right:7px; color:#636363;}
+.text textarea{width:672px; height:140px; border:1px solid #c7c7c7; border-radius:4px; background-color:#f5f5f5; color:#636363;padding:10px;outline: none;}
+.yzm input{width:140px; height:34px; border:1px solid #c7c7c7; border-radius:4px; background-color:#f5f5f5; float:left; margin-right:7px; color:#636363;padding: 0 10px;}
 .yzm span{float:left;}
-.tsubs{width:80px; height:36px; border:none; border-radius:4px; background-color:#3671ad; color:#fff; font-family:"微软雅黑";}
-.tsubx{width:80px; height:36px; border:none; border-radius:4px; background-color:#a2a2a2; color:#fff; font-family:"微软雅黑";}
+.tsubs{width:80px; height:36px; border:none; border-radius:4px; background-color:#3671ad; color:#fff; font-family:"微软雅黑";cursor:pointer;}
+.tsubx{width:80px; height:36px; border:none; border-radius:4px; background-color:#a2a2a2; color:#fff; font-family:"微软雅黑";cursor:pointer;}
 </style>
-   <div class="zxly">在线留言</div>   
-   <div class="mtab">
-    <form action="/message.html" method="post" >
-	   <input type="hidden" name="act" value="add"  class="infos" id="name">
-   <table width="100%" border="0" cellspacing="0" cellpadding="0">
-	<tr>
-		<td align="right" width="70">您的姓名：</td>
-		<td class="linp1" width="314"><input type="text" name="realname" placeholder="请输入您的姓名" required="" class="infos" id="realname"/></td>
-		<td align="right" width="70">联系电话：</td>
-		<td class="linp1"><input type="text" name="tel" placeholder="请输入您的联系电话" required="" class="infos" id="tel" /></td>
-	</tr>
-	<tr>
-		<td align="right">电子邮箱：</td>
-		<td class="linp1"><input name="email" placeholder="请输入您的E-mail" required="" id="email" type="text" /></td>
-		<td align="right">联系地址：</td>
-		<td class="linp1"><input name="address" placeholder="请输入您的联系地址" required="" id="address" type="text" /></td>
-	</tr>
-	<tr>
-		<td align="right" valign="top">留言内容：</td>
-		<td colspan="3" class="text"><textarea required=""  id="content" name="content" tabindex="5"  placeholder="请输入您的留言信息" ></textarea></td>
-		</tr>
-	<tr>
-		<td align="right">验证码：</td>
-		<td colspan="2" class="yzm"><input name="fname"  id="fname"  placeholder="" type="text" /><span><img id="vcodeImg" src="about:blank" onerror="this.onerror=null;this.src='/includes/getcode.php?s='+Math.random();" alt="验证码" title="看不清楚?换一张" style="cursor:pointer;" onclick="src='/includes/getcode.php?s='+Math.random()"/></span></td>
-		<td align="right" class="tsub">
-		<input name="" type="submit" value="提交" class="tsubs"/>
-		<input name="" type="reset" value="重置" class="tsubx"/>
-		</td>
-	</tr>
-</table>
-</form>
-   </div>   
-
-      
-    </div> 
-   </div> 
-  </div> 
-	
-	<tc_include file="Public:footer" />
-
-	<tc_include file="Public:scripts" />
-
+      <div class="zxly">在线留言</div>
+      <div class="mtab">
+        <form class="form-light js-ajax-form" role="form" method="post" action="{:U('api/guestbook/addmsg')}">
+          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td align="right" width="70">您的姓名：</td>
+              <td class="linp1" width="314">
+              <input type="text" name="full_name" placeholder="请输入您的姓名" class="infos"/></td>
+              <td align="right" width="70">联系电话：</td>
+              <td class="linp1"><input type="text" name="tell" placeholder="请输入您的联系电话" class="infos"/></td>
+            </tr>
+            <tr>
+              <td align="right">电子邮箱：</td>
+              <td class="linp1"><input name="email" placeholder="请输入您的E-mail" type="email" /></td>
+              <td align="right">联系地址：</td>
+              <td class="linp1"><input name="address" placeholder="请输入您的联系地址" type="text" /></td>
+            </tr>
+            <tr>
+              <td align="right" valign="top">留言内容：</td>
+              <td colspan="3" class="text"><textarea name="msg" tabindex="5"  placeholder="请输入您的留言信息" ></textarea></td>
+            </tr>
+            <tr>
+              <td align="right">验证码：</td>
+              <td colspan="2" class="yzm">
+              <input  name="verify" autocomplete="off" placeholder="请填写验证码" type="text" />
+                <span>{:sp_verifycode_img('length=4&font_size=16&width=150&height=34&use_noise=1&use_curve=0','style="cursor:pointer;vertical-align: top;" title="点击获取"')}</span></td>
+              <td align="right" class="tsub">
+              <button type="submit" class="btn btn-primary js-ajax-submit tsubs" data-wait="1500">提交留言</button>
+                <input name="" type="reset" value="重置" class="tsubx"/></td>
+            </tr>
+          </table>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<tc_include file="Public:footer" />
+<tc_include file="Public:scripts" />
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#guestbook-submit').click(function () {
+			console.log("111")
+            $('#guestbook-form').ajaxSubmit({
+                url: "/api/guestbook/addmsg",
+                type: "post",
+                success: function (data) {
+					console.log(data)
+                    if (data.code == 0) {
+                        layer.msg(data.msg);
+                    } else {
+                        $('#MessageSent').removeClass("hidden");
+                        layer.msg(data.msg, function () {
+                            setTimeout(function () {
+                                parent.location.reload();
+                            }, 300);
+                        });
+                    }
+                }
+            });
+            return false;
+        });
+    });
+</script>
 </body>
 </html>

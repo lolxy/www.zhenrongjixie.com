@@ -1,138 +1,118 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>{$name} {$seo_title} {$site_name}</title>
-	<meta name="keywords" content="{$seo_keywords}" />
-	<meta name="description" content="{$seo_description}">
-    <tc_include file="Public:head" />
-    <link href="__TMPL__Public/assets/css/page.css" rel="stylesheet" type="text/css" /> 
+<title>{$name} {$seo_title} {$site_name}</title>
+<meta name="keywords" content="{$seo_keywords}" />
+<meta name="description" content="{$seo_description}">
+<tc_include file="Public:head" />
+<link href="__TMPL__Public/assets/css/page.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <tc_include file="Public:nav" />
-
-  <div class="clear"></div>
-
-    
-    <div id="warp_main">
-        <div class="main_banner">
-						<img src="__TMPL__Public/assets/picture/201505151545465555a42abfdd8.jpg" /> 
-			        </div>
-        
-        <div class="main_con_tit">
-            <div class="main_tit clearfix">
-                <div class="main_tit_l">
-                    <span>产品中心 / </span><span class="pro_tit">PRODUCTS</span>
-                </div>
-                <div class="main_tit_r clearfix">
-
-     <div class="home_tit"> 
-       <span class="home">当前位置：</span> 
-       <ul> 
-        <li class="h"><a href="/">首页</a> </li> 
-        <li><a href="/product.html">产品中心</a></li> 
-        <li><a href="/product.html">产品中心</a></li> 
-       </ul> 
-      </div> 
-                </div>
-            </div>
+<div class="clear"></div>
+<div id="warp_main">
+    <php>
+$slides=sp_getslide("product_ads");
+</php>
+<div class="main_banner">
+<foreach name="slides" item="vo" key="k">
+	<if condition="$k == 0">
+    <img src="{:sp_get_asset_upload_path($vo['slide_pic'])}" alt="">
+    </if>
+</foreach>
+</div>
+  <div class="main_con_tit">
+    <div class="main_tit">
+      <div class="main_tit_l"> <span>产品中心 / </span><span class="pro_tit">PRODUCTS</span> </div>
+      <div class="main_tit_r">
+        <div class="home_tit"> 
+        	<span class="home">当前位置：</span>
+          <php> $breadcrumb = sp_get_breadcrumb($cat_id); </php>
+          <ul>
+            <li class="h"><a href="/">首页</a> </li>
+            <volist name="breadcrumb" id="vo">
+              <li><a href="{:leuu('list/index',array('id'=>$vo['term_id']))}">{$vo.name}</a></li>
+            </volist>
+            <li>{$name}</li>
+          </ul>
         </div>
-        
-		<div style="width:1110px; margin:0px auto; overflow:hidden;"> 
-     <div id="example-one"> 
-		  <ul class="nav"> 
-	         <li class="nav-one"><a href="/product_deta/id-2.html" class="">NE板链式提升机</a></li> 
-	          <li class="nav-one"><a href="/product_deta/id-4.html" class="">NSE高速板链提升机</a></li> 
-	          <li class="nav-one"><a href="/product_deta/id-3.html" class="">FU链运机</a></li> 
-	          <li class="nav-one"><a href="/product_deta/id-8.html" class="">TGD钢丝胶带提升机</a></li> 
-	          <li class="nav-one"><a href="/product_deta/id-9.html" class="">SCD熟料槽式输送机</a></li> 
-	          <li class="nav-one"><a href="/product_deta/id-1.html" class="">BL板式喂料机</a></li> 
-	          <li class="nav-one"><a href="/product_deta/id-5.html" class="">LD系列高温料不锈钢输送机</a></li> 
-	         </ul> 
-	  </div></div>
-		
-        <div class="main_pro">
-		              <div class="main_pro_con">
-			                   <div class="pro_con_l clearfix">
-                       <div class="pro_l_l">
-                           <img width="303px" height="208px" src="__TMPL__Public/assets/picture/20150521170234555d9f2a2dde4.jpg"/>
-                       </div>
-                       
-                       <div class="pro_l_r">
-                            <a href="/product_deta/id-2.html"><h3>NE板链式提升机</h3>
-                            <p>1.概述
-TB-NE系列板链式提升机(以下称NE系列板链式提升机)是本公司引进国外同类产品先进技术开发的产品。是目前国内较为先进成熟的一种垂直提升设备，已被广泛用来提升各种散状物料，在各工业国家，这类提升机应用极广。由于其高效节能，已成为替代HL及TH型等环链式提升机的首选。</p></a>
-                            <div class="pro_more"><a href="/product_deta/id-2.html"><img src="__TMPL__Public/assets/picture/arrow_new.png"/></a></div>
-                       </div>
-                 </div>
-				               </div> 
-              
-                        <div class="main_pro_con">
-			  				    <div class="pro_con_l clearfix">
-                       <div class="pro_l_txt">
-                            <a href="/product_deta/id-4.html"><h3>NSE高速板链提升机</h3>
-                            <p>概述
-NSE系列高速板链斗式提升机是我公司引进国外同类产品先进技术开发的一种新型垂直提升设备。在各工业国家，这类产品被广泛用于提升粉状和小颗粒状物料。
-NSE系...</p></a>
-                            <div class="pro_more"><a href="/product_deta/id-4.html"><img src="__TMPL__Public/assets/picture/arrow_new.png"/></a></div>
-                       </div>
-                       
-                       <div class="pro_r_img"><img width="303px" height="208px" src="__TMPL__Public/assets/picture/20150522102450555e9372abc0e.jpg"/></div>
-                       
-                 </div>
-				               </div> 
-              
-                        <div class="main_pro_con">
-			                   <div class="pro_con_l clearfix">
-                       <div class="pro_l_l">
-                           <img width="303px" height="208px" src="__TMPL__Public/assets/picture/20150521180610555dae1250335.jpg"/>
-                       </div>
-                       
-                       <div class="pro_l_r">
-                            <a href="/product_deta/id-3.html"><h3>FU链运机</h3>
-                            <p>一、主要特点：
-1.输送能力大。输送能力达6m ³/h-500m ³/h。
-2.输送能耗低。与螺旋输送机相比节电40%-60%。
-3.密封、安全。全密封的机壳使粉尘缝可钻，操作安全，运行可靠。
-4.使用寿命长。用合金钢材经先进的热处理工艺加工而成的输送链、正常寿命 &gt;5年，链上朱滚子寿命&gt;2年以上。
-5.工艺布置灵活。可多点进料式出料，可单向或双向...</p></a>
-                            <div class="pro_more"><a href="/product_deta/id-3.html"><img src="__TMPL__Public/assets/picture/arrow_new.png"/></a></div>
-                       </div>
-                 </div>
-				               </div> 
-              
-                        <div class="main_pro_con">
-			  				    <div class="pro_con_l clearfix">
-                       <div class="pro_l_txt">
-                            <a href="/product_deta/id-8.html"><h3>TGD钢丝胶带提升机</h3>
-                            <p>N-TGD钢丝胶带斗式提升机（以下简称TGD）具有输送量大、体积小、功耗低、运行平稳可靠、使用寿命长、超高提升等特点。
-本机适用于干散粉状物料或小粒状物料的垂直输...</p></a>
-                            <div class="pro_more"><a href="/product_deta/id-8.html"><img src="__TMPL__Public/assets/picture/arrow_new.png"/></a></div>
-                       </div>
-                       
-                       <div class="pro_r_img"><img width="303px" height="208px" src="__TMPL__Public/assets/picture/20150522112010555ea06a2dde4.jpg"/></div>
-                       
-                 </div>
-				               </div> 
-              
-              
-
-              
-              
-
-              
-
-              
-              <div class="pro_page">
-                  <div class="pager_pro">
-                      <a class="info">7条记录</a> <a class="current">1</a> <a href="/product.html?&page=2">2</a> <a href="/product.html?&page=2">下一页</a>                  </div>
-              
-              </div>
-        
-        </div>
-        
+      </div>
     </div>
-  
-<tc_include file="Public:footer" /> 
+  </div>
+  <div style="width:1110px; margin:0px auto; overflow:hidden;">
+    <div id="example-one">
+      <ul class="nav">
+      	<php> 
+        $productLists = sp_sql_posts_paged_bycatid($cat_id,"order:post_date DESC;"); 
+        $productListPages = sp_sql_posts_paged_bycatid($cat_id,"order:post_date DESC;",4); 
+        </php>
+    	<volist name="productLists['posts']" id="vo">
+        	<li class="nav-one"><a href="{:leuu('article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}">{$vo.post_title}</a></li>
+        </volist>
+      </ul>
+    </div>
+  </div>
+  <div class="main_pro">
+  <volist name="productListPages['posts']" id="vo" key="k">
+      <php> $smeta=json_decode($vo['smeta'], true); </php>
+      <if condition="$k%2 != 0">
+    <div class="main_pro_con">
+      <div class="pro_con_l clearfix">
+        <div class="pro_l_l"> 
+            <if condition="empty($smeta['thumb'])"> 
+                <img src="__TMPL__Public/images/default_tupian1.png" alt="{$vo.post_title}" width="303" height="208"/>
+            <else />
+                <img src="{:sp_get_asset_upload_path($smeta['thumb'])}" alt="{$vo.post_title}" width="303" height="208"/> 
+            </if>
+        </div>
+        <div class="pro_l_r"> 
+        <a href="{:leuu('article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}">
+          <h3>{$vo.post_title}</h3>
+          <p>{$vo.post_excerpt}</p>
+         </a>
+          <div class="pro_more">
+              <a href="{:leuu('article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}">
+              <img src="__TMPL__Public/assets/picture/arrow_new.png"/>
+              </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <else/>
+    	<div class="main_pro_con">
+          <div class="pro_con_l clearfix">
+            <div class="pro_l_txt"> 
+            <a href="{:leuu('article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}">
+              <h3>{$vo.post_title}</h3>
+              <p>{$vo.post_excerpt}</p>
+             </a>
+              <div class="pro_more">
+              	<a href="{:leuu('article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}">
+                  <img src="__TMPL__Public/assets/picture/arrow_new.png"/>
+                 </a>
+              </div>
+            </div>
+            <div class="pro_r_img">
+            	<if condition="empty($smeta['thumb'])"> 
+                <img src="__TMPL__Public/images/default_tupian1.png" alt="{$vo.post_title}" width="303" height="208"/>
+            	<else />
+                <img src="{:sp_get_asset_upload_path($smeta['thumb'])}" alt="{$vo.post_title}" width="303" height="208"/> 
+            	</if>
+            </div>
+          </div>
+        </div>
+    </if>
+    </volist>
+    <div class="pro_page">
+        <div class="pager_pro">
+          <ul>
+            {$productListPages['page']}
+          </ul>
+        </div>
+  	</div>
+  </div>
+</div>
+<tc_include file="Public:footer" />
 <!-- JavaScript -->
 <tc_include file="Public:scripts" />
 </body>

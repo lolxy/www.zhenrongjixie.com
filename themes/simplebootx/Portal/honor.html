@@ -22,21 +22,28 @@
 <div class="clear"></div> 
    
   <div id="warp_main"> 
-   <div class="main_banner"> 
-        <img src="__TMPL__Public/assets/picture/201505151544545555a3f6b7d0c.jpg" /> 
-	   </div> 
+     <php>
+$slides=sp_getslide("honor_ads");
+</php>
+<div class="main_banner">
+<foreach name="slides" item="vo" key="k">
+	<if condition="$k == 0">
+    <img src="{:sp_get_asset_upload_path($vo['slide_pic'])}" alt="">
+    </if>
+</foreach>
+</div>
    <div class="main_about"> 
-    <div class="main_tit clearfix"> 
+    <div class="main_tit"> 
      <div class="main_tit_l"> 
       <span>荣誉资质 / </span> 
       <span class="pro_tit">HONOR</span> 
      </div> 
-     <div class="main_tit_r clearfix"> 
+     <div class="main_tit_r"> 
       <div class="home_tit"> 
        <span class="home">当前位置：</span> 
        <ul> 
         <li class="h"><a href="/">首页</a> </li> 
-        <li><a href="/about.html">关于我们</a></li> 
+        <li><a href="{:leuu('page/index',array('id'=>1))}">关于我们</a></li> 
         <li>荣誉资质</li> 
        </ul> 
       </div> 
@@ -45,173 +52,40 @@
     <div class="main_about_box clearfix "> 
      <div id="example-one"> 
       <ul class="nav"> 
-       <li class="nav-one"><a href="/about.html">公司简介</a></li> 
-       <li class="nav-two"><a href="/honor.html" class="current">荣誉资质</a></li> 
-       <li class="nav-three"><a href="/organ.html">组织架构</a></li> 
+      <li class="nav-one"><a href="{:leuu('page/index',array('id'=>1))}"      
+          <if condition="$id == 1">class="current"</if>
+          >公司简介</a></li>
+        <li class="nav-one"><a href="{:leuu('page/index',array('id'=>2))}"      
+          <if condition="$id == 2">class="current"</if>
+          >荣誉资质</a></li>
+         <li class="nav-one"><a href="{:leuu('page/index',array('id'=>3))}"      
+          <if condition="$id == 3">class="current"</if>
+          >组织架构</a></li>
       </ul> 
-      <div id="content" class="honor_list clearfix" style="text-align: center;height: 148px;"> 
-       <!--<ul> 
-	           <li> <a data-fancybox-group="gallery" href="__TMPL__Public/assets/picture/201505151558475555a7372e44c.jpg"><img src="__TMPL__Public/assets/picture/201505151558475555a7372e44c.jpg" /><br /></a> 
-         <div class="zhi1">
-           信用等级证书         </div> </li>
-                <li> <a data-fancybox-group="gallery" href="__TMPL__Public/assets/picture/201505151558225555a71ed6246.jpg"><img src="__TMPL__Public/assets/picture/201505151558225555a71ed6246.jpg" /><br /></a> 
-         <div class="zhi1">
-           质量管理体系认证证书         </div> </li>
-                <li> <a data-fancybox-group="gallery" href="__TMPL__Public/assets/picture/20150522135740555ec55439500.jpg"><img src="__TMPL__Public/assets/picture/20150522135740555ec55439500.jpg" /><br /></a> 
-         <div class="zhi1">
-           认证证书         </div> </li>
-                <li> <a data-fancybox-group="gallery" href="__TMPL__Public/assets/picture/20150521170333555d9f6576590.jpg"><img src="__TMPL__Public/assets/picture/20150521170333555d9f6576590.jpg" /><br /></a> 
-         <div class="zhi1">
-           ISO9001认证证书         </div> </li>
-                <li> <a data-fancybox-group="gallery" href="__TMPL__Public/assets/picture/201505151558355555a72b936cd.jpg"><img src="__TMPL__Public/assets/picture/201505151558355555a72b936cd.jpg" /><br /></a> 
-         <div class="zhi1">
-           执行标准备案登记证         </div> </li>
-                <li> <a data-fancybox-group="gallery" href="__TMPL__Public/assets/picture/201505151558595555a743bc88d.jpg"><img src="__TMPL__Public/assets/picture/201505151558595555a743bc88d.jpg" /><br /></a> 
-         <div class="zhi1">
-           组织机构代码证         </div> </li>
-                <li> <a data-fancybox-group="gallery" href="__TMPL__Public/assets/picture/20150521171028555da104d5b70.jpg"><img src="__TMPL__Public/assets/picture/20150521171028555da104d5b70.jpg" /><br /></a> 
-         <div class="zhi1">
-           行业供应商百强证书         </div> </li>
-                <li> <a data-fancybox-group="gallery" href="__TMPL__Public/assets/picture/20150521171116555da134132a6.jpg"><img src="__TMPL__Public/assets/picture/20150521171116555da134132a6.jpg" /><br /></a> 
-         <div class="zhi1">
-           行业供应商百强证书         </div> </li>
-        		 
-        
-       </ul>--> 
-	              <div style="display:inline; float:left;margin-left: 61px;
+<php>
+            $honor_slides=sp_getslide("honor_list");
+            </php>
+      <div id="content" class="honor_list clearfix" style="text-align: center;min-height: 148px;margin-bottom:20px;"> 
+      <foreach name="honor_slides" item="vo">
+	   <div style="display:inline; float:left;margin-left: 61px;
     margin-top: 30px;">
                <table height="148" width="188" style="border: 5px solid #3671ad;
         background: #fff;">
                     <tbody>
                         <tr>
                             <td valign="middle">
-                                <a id="example1" href="__TMPL__Public/assets/picture/201505151558475555a7372e44c.jpg"><img style="max-width: 178px;
-        max-height: 148px;" src="__TMPL__Public/assets/picture/201505151558475555a7372e44c.jpg" /></a>
+                                <a id="example1" href="{:sp_get_image_url($vo['slide_pic'])}"><img style="max-width: 178px;
+        max-height: 148px;" src="{:sp_get_image_url($vo['slide_pic'])}" /></a>
                             </td>
                         </tr>
                 
                     </tbody>
                </table>
            </div>
-		              <div style="display:inline; float:left;margin-left: 61px;
-    margin-top: 30px;">
-               <table height="148" width="188" style="border: 5px solid #3671ad;
-        background: #fff;">
-                    <tbody>
-                        <tr>
-                            <td valign="middle">
-                                <a id="example1" href="__TMPL__Public/assets/picture/201505151558225555a71ed6246.jpg"><img style="max-width: 178px;
-        max-height: 148px;" src="__TMPL__Public/assets/picture/201505151558225555a71ed6246.jpg" /></a>
-                            </td>
-                        </tr>
-                
-                    </tbody>
-               </table>
-           </div>
-		              <div style="display:inline; float:left;margin-left: 61px;
-    margin-top: 30px;">
-               <table height="148" width="188" style="border: 5px solid #3671ad;
-        background: #fff;">
-                    <tbody>
-                        <tr>
-                            <td valign="middle">
-                                <a id="example1" href="__TMPL__Public/assets/picture/20150522135740555ec55439500.jpg"><img style="max-width: 178px;
-        max-height: 148px;" src="__TMPL__Public/assets/picture/20150522135740555ec55439500.jpg" /></a>
-                            </td>
-                        </tr>
-                
-                    </tbody>
-               </table>
-           </div>
-		              <div style="display:inline; float:left;margin-left: 61px;
-    margin-top: 30px;">
-               <table height="148" width="188" style="border: 5px solid #3671ad;
-        background: #fff;">
-                    <tbody>
-                        <tr>
-                            <td valign="middle">
-                                <a id="example1" href="__TMPL__Public/assets/picture/20150521170333555d9f6576590.jpg"><img style="max-width: 178px;
-        max-height: 148px;" src="__TMPL__Public/assets/picture/20150521170333555d9f6576590.jpg" /></a>
-                            </td>
-                        </tr>
-                
-                    </tbody>
-               </table>
-           </div>
-		              <div style="display:inline; float:left;margin-left: 61px;
-    margin-top: 30px;">
-               <table height="148" width="188" style="border: 5px solid #3671ad;
-        background: #fff;">
-                    <tbody>
-                        <tr>
-                            <td valign="middle">
-                                <a id="example1" href="__TMPL__Public/assets/picture/201505151558355555a72b936cd.jpg"><img style="max-width: 178px;
-        max-height: 148px;" src="__TMPL__Public/assets/picture/201505151558355555a72b936cd.jpg" /></a>
-                            </td>
-                        </tr>
-                
-                    </tbody>
-               </table>
-           </div>
-		              <div style="display:inline; float:left;margin-left: 61px;
-    margin-top: 30px;">
-               <table height="148" width="188" style="border: 5px solid #3671ad;
-        background: #fff;">
-                    <tbody>
-                        <tr>
-                            <td valign="middle">
-                                <a id="example1" href="__TMPL__Public/assets/picture/201505151558595555a743bc88d.jpg"><img style="max-width: 178px;
-        max-height: 148px;" src="__TMPL__Public/assets/picture/201505151558595555a743bc88d.jpg" /></a>
-                            </td>
-                        </tr>
-                
-                    </tbody>
-               </table>
-           </div>
-		              <div style="display:inline; float:left;margin-left: 61px;
-    margin-top: 30px;">
-               <table height="148" width="188" style="border: 5px solid #3671ad;
-        background: #fff;">
-                    <tbody>
-                        <tr>
-                            <td valign="middle">
-                                <a id="example1" href="__TMPL__Public/assets/picture/20150521171028555da104d5b70.jpg"><img style="max-width: 178px;
-        max-height: 148px;" src="__TMPL__Public/assets/picture/20150521171028555da104d5b70.jpg" /></a>
-                            </td>
-                        </tr>
-                
-                    </tbody>
-               </table>
-           </div>
-		              <div style="display:inline; float:left;margin-left: 61px;
-    margin-top: 30px;">
-               <table height="148" width="188" style="border: 5px solid #3671ad;
-        background: #fff;">
-                    <tbody>
-                        <tr>
-                            <td valign="middle">
-                                <a id="example1" href="__TMPL__Public/assets/picture/20150521171116555da134132a6.jpg"><img style="max-width: 178px;
-        max-height: 148px;" src="__TMPL__Public/assets/picture/20150521171116555da134132a6.jpg" /></a>
-                            </td>
-                        </tr>
-                
-                    </tbody>
-               </table>
-           </div>
-		   
-
-
-
-
-
+           </foreach>
   </div> 
-   
  </div> 
 </div> 
-<div class="pro_page"> 
-     <div class="pager_pro"> 
-    <a class="info">10条记录</a> <a class="current">1</a> <a href="/honor.html?&page=2">2</a> <a href="/honor.html?&page=2">下一页</a>     </div> 
-    </div> 
 </div> 
 </div> 
 <tc_include file="Public:footer"/>

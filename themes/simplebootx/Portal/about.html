@@ -10,23 +10,30 @@
 <tc_include file="Public:nav" />
 	<div class="clear"></div>
   <div id="warp_main"> 
-   <div class="main_banner"> 
-      <img src="__TMPL__Public/assets/picture/201505151544545555a3f6b7d0c.jpg" /> 
-   </div> 
+  <php>
+$slides=sp_getslide("about_ads");
+</php>
+<div class="main_banner">
+<foreach name="slides" item="vo" key="k">
+	<if condition="$k == 0">
+    <img src="{:sp_get_asset_upload_path($vo['slide_pic'])}" alt="">
+    </if>
+</foreach>
+</div>
 
    <div class="main_about"> 
    
-   <div class="main_tit clearfix"> 
+   <div class="main_tit"> 
      <div class="main_tit_l"> 
       <span>关于我们 / </span>
       <span class="pro_tit">ABOUT US</span> 
      </div> 
-     <div class="main_tit_r clearfix"> 
+     <div class="main_tit_r"> 
       <div class="home_tit" style="width:263px;"> 
        <span class="home">当前位置：</span> 
        <ul> 
         <li class="h"><a href="/">首页</a> </li> 
-        <li><a href="/about.html">关于我们</a></li> 
+        <li><a href="{:leuu('page/index',array('id'=>1))}">关于我们</a></li> 
         <li>公司简介</li> 
        </ul> 
       </div>  
@@ -36,9 +43,15 @@
     <div class="main_about_box clearfix "> 
      <div id="example-one"> 
       <ul class="nav">    
-	   <li class="nav-one"><a href="/about.html" class="current">公司简介</a></li> 
-       <li class="nav-two"><a href="/honor.html">荣誉资质</a></li> 
-       <li class="nav-three"><a href="/organ.html">组织架构</a></li> 
+	   <li class="nav-one"><a href="{:leuu('page/index',array('id'=>1))}"      
+          <if condition="$id == 1">class="current"</if>
+          >公司简介</a></li>
+        <li class="nav-one"><a href="{:leuu('page/index',array('id'=>2))}"      
+          <if condition="$id == 2">class="current"</if>
+          >荣誉资质</a></li>
+         <li class="nav-one"><a href="{:leuu('page/index',array('id'=>3))}"      
+          <if condition="$id == 3">class="current"</if>
+          >组织架构</a></li>
       </ul> 
       <div class="list-wrap"> 
         {$post_content}

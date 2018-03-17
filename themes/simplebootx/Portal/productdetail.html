@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>{$post_title} {$site_name}</title>
+<meta name="keywords" content="{$post_keywords}" />
+<meta name="description" content="{$post_excerpt}">
+<tc_include file="Public:head" />
+<script src="__TMPL__Public/assets/js/tbhb.js" type="text/javascript"></script> 
+</head>
+<body class="">
+<tc_include file="Public:nav" />
+<div class="clear"></div>
+<div id="warp_main">
+  <php> $slides=sp_getslide("product_ads"); </php>
+  <div class="main_banner">
+    <foreach name="slides" item="vo" key="k">
+      <if condition="$k == 0"> <img src="{:sp_get_asset_upload_path($vo['slide_pic'])}" alt=""> </if>
+    </foreach>
+  </div>
+  <div class="main_con_tit">
+    <div class="main_tit">
+      <div class="main_tit_l"> <span>产品中心 / </span> <span class="pro_tit">PRODUCTS</span> </div>
+      <div class="main_tit_r">
+        <div class="home_tit"> <span class="home">当前位置：</span>
+          <php> $breadcrumb = sp_get_breadcrumb($term_id); </php>
+          <ul>
+            <li class="h"><a href="/">首页</a> </li>
+            <volist name="breadcrumb" id="vo">
+              <li><a href="{:leuu('list/index',array('id'=>$vo['term_id']))}">{$vo.name}</a></li>
+            </volist>
+            <li>{$post_title}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="width:1110px; margin:0px auto; overflow:hidden;">
+    <div id="example-one">
+      <ul class="nav">
+        <php> $productLists = sp_sql_posts_paged_bycatid($term_id,"order:post_date DESC;"); </php>
+        <volist name="productLists['posts']" id="vo">
+          <li class="nav-one"><a href="{:leuu('article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}" <if condition="$vo['object_id'] == $id">class="current"</if>>{$vo.post_title}</a></li>
+        </volist>
+      </ul>
+    </div>
+  </div>
+  <div class="main_product">
+    <div class="product_con">
+      <div class="product_list">
+        <h3>{$post_title}</h3>
+        <div class="main-wrap">
+          <div id="slide-box"> <b class="corner"></b>
+            <div class="slide-content" id="J_slide">
+              <div class="wrap">
+                <ul class="ks-switchable-content">
+                    <foreach name="smeta['photo']" item="vo">
+                      <li><a href="javascript:;">
+                      <img src="{:sp_get_asset_upload_path($vo['url'])}" /></a>
+                        <p>{$vo['alt']}</p>
+                      </li> 
+                    </foreach>
+                </ul>
+              </div>
+              <div class="ks-switchable-triggers"> <a class="prev" id="J_prev" href="javascript:void(0);"></a> <a class="next_row" id="J_next" href="javascript:void(0);"> </a> </div>
+            </div>
+            <b class="corner"></b> </div>
+        </div>
+      </div>
+      <div class="product_bottom">
+        <h3>详情</h3>
+        <div class="content">
+        	{$post_content}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript" src="__TMPL__Public/assets/js/jquery-1.8.3.min.js"></script> 
+<script type="text/javascript" src="__TMPL__Public/assets/js/jquery.caroufredsel-6.2.1-packed.js"></script> 
+<script type="text/javascript">
+$(".ks-switchable-content").carouFredSel({
+responsive	: true,
+items		: 3,
+width: '320px',
+height: 'auto',
+prev: '#J_prev',
+next: '#J_next',
+mousewheel: true,
+swipe: {
+onMouse: true,
+onTouch: true
+}
+});
+</script>
+<tc_include file="Public:footer"/>
+<tc_include file="Public:scripts"/>
+</body>
+</html>

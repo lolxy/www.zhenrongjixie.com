@@ -1,101 +1,92 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>{$name} {$seo_title} {$site_name}</title>
-	<meta name="keywords" content="{$seo_keywords}" />
-	<meta name="description" content="{$seo_description}">
-    <tc_include file="Public:head" />
-    <link href="__TMPL__Public/assets/css/page.css" rel="stylesheet" type="text/css" /> 
+<title>{$name} {$seo_title} {$site_name}</title>
+<meta name="keywords" content="{$seo_keywords}" />
+<meta name="description" content="{$seo_description}">
+<tc_include file="Public:head" />
+<link href="__TMPL__Public/assets/css/page.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <tc_include file="Public:nav" />
-	<div class="clear"></div>
-  <div id="warp_main"> 
-   <div class="main_banner"> 
-        <img src="__TMPL__Public/assets/picture/201505151545225555a4120c521.jpg" /> 
-	   </div> 
-   <div class="main_con_tit"> 
-     
-   </div> 
-   <div class="main_about"> 
-   
-   
-   <div class="main_tit clearfix"> 
-     <div class="main_tit_l"> 
-      <span>新闻中心 / </span>
-      <span class="pro_tit">NEWS</span> 
-     </div> 
-     <div class="main_tit_r clearfix"> 
-
-	  
-	 <div class="home_tit"> 
-       <span class="home">当前位置：</span> 
-       <ul> 
-        <li class="h"><a href="/">首页</a> </li> 
-        <li><a href="/news.html">新闻中心</a></li> 
-        <li><a href="/news.html">新闻中心</a></li> 
-       </ul> 
-      </div>   
-	  
-     </div> 
+<div class="clear"></div>
+<div id="warp_main">
+<php>
+$slides=sp_getslide("news_ads");
+</php>
+<div class="main_banner">
+<foreach name="slides" item="vo" key="k">
+	<if condition="$k == 0">
+    <img src="{:sp_get_asset_upload_path($vo['slide_pic'])}" alt="">
+    </if>
+</foreach>
+</div>
+<div class="main_con_tit"> </div>
+<div class="main_about">
+<div class="main_tit">
+  <div class="main_tit_l"> <span>新闻中心 / </span> <span class="pro_tit">NEWS</span> </div>
+  <div class="main_tit_r">
+    <div class="home_tit"> <span class="home">当前位置：</span>
+      <php> $breadcrumb = sp_get_breadcrumb($cat_id); </php>
+      <ul>
+        <li class="h"><a href="/">首页</a> </li>
+        <volist name="breadcrumb" id="vo">
+          <li><a href="{:leuu('list/index',array('id'=>$vo['term_id']))}">{$vo.name}</a></li>
+        </volist>
+        <li>{$name}</li>
+      </ul>
     </div>
-   
-   
-    <div class="main_about_box clearfix "> 
-     <div id="example-one"> 
-      <ul class="nav"> 
-	      <li class="nav-one"><a href="{:leuu('list/index',array('id'=>3))}" <if condition="$cat_id == 3">class="current"</if>>公司新闻</a></li> 
-	      <li class="nav-one"><a href="{:leuu('list/index',array('id'=>4))}" <if condition="$cat_id == 4">class="current"</if>>行业新闻</a></li> 
-      </ul> 
-      <div class="list-wrap"> 
-       <ul id="featured"> 
-         <div class="news_box clearfix">
-           <div class="n_box_r">
-           <ul class="article_list">
-               <ul class="news_list clearfix">
-                <php>
-					$lists = sp_sql_posts_paged_bycatid($cat_id,"order:post_date DESC;",10);
-				</php>
-				<volist name="lists['posts']" id="vo">
-				<php>
-					$smeta=json_decode($vo['smeta'], true);
-				</php>
-			       <li onclick="location='{:leuu('article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}'"> 
-                   <div class="left_image">
-                    <if condition="empty($smeta['thumb'])"> 
-                        <img src="__TMPL__Public/images/default_tupian1.png" alt="{$vo.post_title}" width="179" height="120"/>
-                    <else /> 
-                        <img src="{:sp_get_asset_upload_path($smeta['thumb'])}" alt="{$vo.post_title}" width="179" height="120"/>
-                    </if>
-                   </div> 
-                   <div class="r_text_box"> 
-                    <h5>{$vo.post_title}</h5> 
-                    <p class="text">{$post_excerpt}</p> 
-                    <p class="time">{:date('Y-m-d',strtotime($vo['post_date']))}<span>来源：{$vo.post_source}</span></p> 
-                   </div> 
-                  </li>
-                  </volist>
-               </ul>
-               <div class="pro_page">
-                  <div class="pager_pro"><ul>{$lists['page']}</ul>
-               </div>
-              </div>
-           
-           </div>
-       </div>
-         
-       </ul> 
-       
-
-     
-      </div> 
-       
-     </div> 
-    </div> 
-   </div> 
-  </div> 
-  
-<tc_include file="Public:footer" /> 
+  </div>
+</div>
+<div class="main_about_box clearfix ">
+<div id="example-one">
+<ul class="nav">
+  <li class="nav-one"><a href="{:leuu('list/index',array('id'=>3))}" 
+    <if condition="$cat_id == 3">class="current"</if>
+    >公司新闻</a></li>
+  <li class="nav-one"><a href="{:leuu('list/index',array('id'=>4))}" 
+    <if condition="$cat_id == 4">class="current"</if>
+    >行业新闻</a></li>
+</ul>
+<div class="list-wrap">
+<ul id="featured">
+<div class="news_box clearfix">
+<div class="n_box_r">
+<ul class="article_list">
+  <ul class="news_list clearfix">
+    <php> $lists = sp_sql_posts_paged_bycatid($cat_id,"order:post_date DESC;",10); </php>
+    <volist name="lists['posts']" id="vo">
+      <php> $smeta=json_decode($vo['smeta'], true); </php>
+      <li onclick="location='{:leuu('article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}'">
+        <div class="left_image">
+          <if condition="empty($smeta['thumb'])"> <img src="__TMPL__Public/images/default_tupian1.png" alt="{$vo.post_title}" width="179" height="120"/>
+            <else />
+            <img src="{:sp_get_asset_upload_path($smeta['thumb'])}" alt="{$vo.post_title}" width="179" height="120"/> </if>
+        </div>
+        <div class="r_text_box">
+          <h5>{$vo.post_title}</h5>
+          <p class="text">{$post_excerpt}</p>
+          <p class="time">{:date('Y-m-d',strtotime($vo['post_date']))}<span>来源：{$vo.post_source}</span></p>
+        </div>
+      </li>
+    </volist>
+  </ul>
+  <div class="pro_page">
+    <div class="pager_pro">
+      <ul>
+        {$lists['page']}
+      </ul>
+    </div>
+  </div>
+  </div>
+  </div>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<tc_include file="Public:footer" />
 <!-- JavaScript -->
 <tc_include file="Public:scripts" />
 </body>

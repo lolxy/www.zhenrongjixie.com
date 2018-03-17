@@ -1,91 +1,81 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>{$name} {$seo_title} {$site_name}</title>
-	<meta name="keywords" content="{$seo_keywords}" />
-	<meta name="description" content="{$seo_description}">
-    <tc_include file="Public:head" />
-    <link href="__TMPL__Public/assets/css/page.css" rel="stylesheet" type="text/css" /> 
+<title>{$name} {$seo_title} {$site_name}</title>
+<meta name="keywords" content="{$seo_keywords}" />
+<meta name="description" content="{$seo_description}">
+<tc_include file="Public:head" />
+<link href="__TMPL__Public/assets/css/page.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <tc_include file="Public:nav" />
-
-  <div class="clear"></div> 
-   
-  <div id="warp_main"> 
-   <div class="main_banner"> 
-        <img src="__TMPL__Public/assets/picture/201505151546095555a441a64e7.jpg" /> 
-	   </div> 
-   <div class="main_con_tit"> 
-    <div class="main_tit clearfix"> 
-     <div class="main_tit_l"> 
-      <span>工程项目总包 / </span> 
-      <span class="pro_tit">PROJECT</span> 
-     </div> 
-     <div class="main_tit_r clearfix"> 
-	 <div class="home_tit"> 
-       <span class="home">当前位置：</span> 
-       <ul> 
-        <li class="h"><a href="/">首页</a> </li> 
-        <li><a href="/project.html">工程项目</a></li> 
-        <li><a href="/project.html">工程项目</a></li> 
-       </ul> 
-      </div> 
-	  
-     </div> 
-    </div> 
-   </div> 
-   
-   <div style="width:1110px; margin:0px auto; overflow:hidden;"> 
-     <div id="example-one"> 
-		  <ul class="nav"> 
-	          <li class="nav-one"><a href="/xmzb/id-8.html" class="">水泥粉磨站工程</a></li> 
-	          <li class="nav-one"><a href="/xmzb/id-7.html" class="">粉煤灰粉磨工程</a></li> 
-	          <li class="nav-one"><a href="/xmzb/id-6.html" class="">粉煤灰分选工程</a></li> 
-	          <li class="nav-one"><a href="/xmzb/id-1.html" class="">码头中转站工程</a></li> 
-	         </ul> 
-	  </div></div>
-   
-   <div class="main_case"> 
-    <div class="case_con clearfix"> 
-     <div class="case_list clearfix"> 
-      <ul> 
-	         <li> <a href="/xmzb/id-8.html"><img src="__TMPL__Public/assets/picture/201505151607595555a95f6caaf.jpg" /><br /></a> 
-        <div class="zhi1">
-          <a href="/xmzb/id-8.html">水泥粉磨站工程</a>
-        </div> </li> 
-		       <li> <a href="/xmzb/id-7.html"><img src="__TMPL__Public/assets/picture/2015080709194655c407b27270f.jpg" /><br /></a> 
-        <div class="zhi1">
-          <a href="/xmzb/id-7.html">粉煤灰粉磨工程</a>
-        </div> </li> 
-		       <li> <a href="/xmzb/id-6.html"><img src="__TMPL__Public/assets/picture/2015080709503755c40eed44aa3.jpg" /><br /></a> 
-        <div class="zhi1">
-          <a href="/xmzb/id-6.html">粉煤灰分选工程</a>
-        </div> </li> 
-		       <li> <a href="/xmzb/id-1.html"><img src="__TMPL__Public/assets/picture/2015080710354955c41985632ec.jpg" /><br /></a> 
-        <div class="zhi1">
-          <a href="/xmzb/id-1.html">码头中转站工程</a>
-        </div> </li> 
-		       
-        
-      </ul> 
-     </div> 
-     
-     
-     
-     
-    </div> 
-    
+<div class="clear"></div>
+<div id="warp_main">
+  <php>
+$slides=sp_getslide("project_ads");
+</php>
+<div class="main_banner">
+<foreach name="slides" item="vo" key="k">
+	<if condition="$k == 0">
+    <img src="{:sp_get_asset_upload_path($vo['slide_pic'])}" alt="">
+    </if>
+</foreach>
+</div>
+  <div class="main_con_tit">
+    <div class="main_tit">
+      <div class="main_tit_l"> <span>工程项目总包 / </span> <span class="pro_tit">PROJECT</span> </div>
+      <div class="main_tit_r">
+        <div class="home_tit"> <span class="home">当前位置：</span>
+          <php> $breadcrumb = sp_get_breadcrumb($cat_id); </php>
+          <ul>
+            <li class="h"><a href="/">首页</a> </li>
+            <volist name="breadcrumb" id="vo">
+              <li><a href="{:leuu('list/index',array('id'=>$vo['term_id']))}">{$vo.name}</a></li>
+            </volist>
+            <li>{$name}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="width:1110px; margin:0px auto; overflow:hidden;">
+    <div id="example-one">
+      <ul class="nav">
+        <php> $projectLists = sp_sql_posts_paged_bycatid($cat_id,"order:post_date DESC;"); 
+          $projectListPages = sp_sql_posts_paged_bycatid($cat_id,"order:post_date DESC;",6); </php>
+        <volist name="projectLists['posts']" id="vo">
+          <li class="nav-one"><a href="{:leuu('article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}">{$vo.post_title}</a></li>
+        </volist>
+      </ul>
+    </div>
+  </div>
+  <div class="main_case">
+    <div class="case_con clearfix">
+      <div class="case_list clearfix">
+        <ul>
+          <volist name="projectListPages['posts']" id="vo" key="k">
+            <php> $smeta=json_decode($vo['smeta'], true); </php>
+            <li> <a href="{:leuu('article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}">
+              <if condition="empty($smeta['thumb'])"> <img src="__TMPL__Public/images/default_tupian1.png" alt="{$vo.post_title}" width="303" height="208"/>
+                <else />
+                <img src="{:sp_get_asset_upload_path($smeta['thumb'])}" alt="{$vo.post_title}" width="303" height="208"/> </if>
+              </a>
+              <div class="zhi1"> <a href="{:leuu('article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}">{$vo.post_title}</a> </div>
+            </li>
+          </volist>
+        </ul>
+      </div>
+    </div>
     <div class="pro_page">
-                  <div class="pager_pro">
-					                  </div>
-              
-              </div>
-    
-   </div> 
-  </div> 
-  
-<tc_include file="Public:footer" /> 
+      <div class="pager_pro">
+        <ul>
+          {$projectListPages['page']}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<tc_include file="Public:footer" />
 <!-- JavaScript -->
 <tc_include file="Public:scripts" />
 </body>

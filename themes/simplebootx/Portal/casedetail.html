@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>{$post_title} {$site_name}</title>
+<meta name="keywords" content="{$post_keywords}" />
+<meta name="description" content="{$post_excerpt}">
+<tc_include file="Public:head" />
+</head>
+<body class="">
+<tc_include file="Public:nav" />
+<div class="clear"></div>
+<div id="warp_main">
+  <php> $slides=sp_getslide("case_ads"); </php>
+  <div class="main_banner">
+    <foreach name="slides" item="vo" key="k">
+      <if condition="$k == 0"> <img src="{:sp_get_asset_upload_path($vo['slide_pic'])}" alt=""> </if>
+    </foreach>
+  </div>
+  <div class="main_con_tit">
+    <div class="main_tit">
+      <div class="main_tit_l"> <span>案例展示 / </span> <span class="pro_tit">CASE</span> </div>
+      <div class="main_tit_r">
+        <div class="home_tit"> <span class="home">当前位置：</span>
+          <php> $breadcrumb = sp_get_breadcrumb($trem_id); </php>
+          <ul>
+            <li class="h"><a href="/">首页</a> </li>
+            <volist name="breadcrumb" id="vo">
+              <li><a href="{:leuu('list/index',array('id'=>$vo['term_id']))}">{$vo.name}</a></li>
+            </volist>
+            <li>{$post_title}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="width:1110px; margin:0px auto; overflow:hidden;">
+    <div id="example-one">
+      <ul class="nav">
+        <php> $caseLists = sp_sql_posts_paged_bycatid($term_id,"order:post_date DESC;");</php>
+        <volist name="caseLists['posts']" id="vo">
+          <li class="nav-one"><a href="{:leuu('article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}" 
+            <if condition="$vo['object_id'] == $id">class="current"</if>
+            >{$vo.post_title}</a></li>
+        </volist>
+      </ul>
+    </div>
+  </div>
+  <div class="main_project">
+    <div class="main_prj_box clearfix ">
+      <div class="case_deta"> {$post_content} </div>
+    </div>
+  </div>
+</div>
+<tc_include file="Public:footer"/>
+<tc_include file="Public:scripts"/>
+</body>
+</html>

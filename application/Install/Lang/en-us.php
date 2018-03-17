@@ -1,4 +1,4 @@
-<?php
-return array(
-    'ACCEPT' => 'ACCEPT'
+<?php
+return array(
+    'ACCEPT' => 'ACCEPT'
 );

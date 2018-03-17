@@ -16,9 +16,9 @@
             <span class="left l_bg"></span>
             <span class="right r_bg"></span>
                 <div class="search">
-                <form name=search_form onSubmit="return bottomForm(this);" action="{:leuu('portal/search/index')}" method=post>
+                <form name=search_form action="{:leuu('portal/search/index')}" method=post>
                 <input id="catid" name="catid" type="hidden" value="7">
-                <input id="q" class="enter" name="keyword" onFocus="if(this.value=='…'){this.value='';}else{this.select();}this.style.color='black';"  value="{:I('get.keyword')}" style="width:181px;">
+                <input id="q" class="enter" name="keyword" onFocus="if(this.value=='…'){this.value='';}else{this.select();}this.style.color='black';"  value="{:I('get.keyword')}" style="width:181px;" placeholder="请输入产品名称">
                 <input class="sb" name="Input" type="submit" value="" style="width:21px;height:23px;">
                 </form>
                 </div>

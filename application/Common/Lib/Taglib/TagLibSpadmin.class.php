@@ -2,7 +2,7 @@
 
 /**
  */
-namespace Common\Lib\TagLib;
+namespace Common\Lib\TagLib;
 use Think\Template\TagLib;
 class TagLibSpadmin extends TagLib {
 

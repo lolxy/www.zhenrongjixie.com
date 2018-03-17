@@ -1,97 +1,73 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>{$name} {$seo_title} {$site_name}</title>
-	<meta name="keywords" content="{$seo_keywords}" />
-	<meta name="description" content="{$seo_description}">
-    <tc_include file="Public:head" />
-    <link href="__TMPL__Public/assets/css/page.css" rel="stylesheet" type="text/css" /> 
+<title>{$name} {$seo_title} {$site_name}</title>
+<meta name="keywords" content="{$seo_keywords}" />
+<meta name="description" content="{$seo_description}">
+<tc_include file="Public:head" />
+<link href="__TMPL__Public/assets/css/page.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <tc_include file="Public:nav" />
-
-  <div class="clear"></div> 
-  
-  
-   
-  <div id="warp_main"> 
-   <div class="main_banner"> 
-        <img src="__TMPL__Public/assets/picture/201505151546265555a45216bc8.jpg" /> 
-	   </div> 
-   <div class="main_con_tit"> 
-    <div class="main_tit clearfix"> 
-     <div class="main_tit_l"> 
-      <span>案例展示 / </span>
-      <span class="pro_tit">CASE</span> 
-     </div> 
-     <div class="main_tit_r clearfix"> 
-	 <div class="home_tit"> 
-       <span class="home">当前位置：</span> 
-       <ul> 
-        <li class="h"><a href="/">首页</a> </li> 
-        <li><a href="/case.html">案例展示</a></li> 
-        <li><a href="/case.html">案例展示</a></li> 
-       </ul> 
-      </div> 	  
-	  
-     </div> 
-    </div> 
-   </div>
-   
-   
-   <div style="width:1110px; margin:0px auto; overflow:hidden;"> 
-     <div id="example-one"> 
-		  <ul class="nav"> 
-	         <li class="nav-one"><a href="/case_deta/id-18.html" class="">国外客户</a></li> 
-	          <li class="nav-one"><a href="/case_deta/id-17.html" class="">南方区域</a></li> 
-	          <li class="nav-one"><a href="/case_deta/id-16.html" class="">北方区域</a></li> 
-	         </ul> 
-	  </div></div>
-    
-   <div class="main_project"> 
-    <div class="main_prj_box clearfix "> 
-     <div class="prj_box clearfix">
-           <div class="prj_box_r">
-               <ul class="prj_list clearfix">
-			                   <li onclick="location='/case_deta/id-18.html'"> 
-                   <div class="prj_left_image">
-                    <img src="__TMPL__Public/assets/picture/coin.png" />
-                   </div> 
-                   <div class="prj_text_box"> 
-                    <h5>国外客户</h5> 
-                   </div> 
-                  </li>
-                                  <li onclick="location='/case_deta/id-17.html'"> 
-                   <div class="prj_left_image">
-                    <img src="__TMPL__Public/assets/picture/coin.png" />
-                   </div> 
-                   <div class="prj_text_box"> 
-                    <h5>南方区域</h5> 
-                   </div> 
-                  </li>
-                                  <li onclick="location='/case_deta/id-16.html'"> 
-                   <div class="prj_left_image">
-                    <img src="__TMPL__Public/assets/picture/coin.png" />
-                   </div> 
-                   <div class="prj_text_box"> 
-                    <h5>北方区域</h5> 
-                   </div> 
-                  </li>
-                                    
-                  
-                  
-               </ul>
-               
-               
-           
-           </div>
-           
-       </div> 
-    </div> 
-   </div> 
-  </div> 
-  
-<tc_include file="Public:footer" /> 
+<div class="clear"></div>
+<div id="warp_main">
+    <php>
+$slides=sp_getslide("case_ads");
+</php>
+<div class="main_banner">
+<foreach name="slides" item="vo" key="k">
+	<if condition="$k == 0">
+    <img src="{:sp_get_asset_upload_path($vo['slide_pic'])}" alt="">
+    </if>
+</foreach>
+</div>
+  <div class="main_con_tit">
+    <div class="main_tit">
+      <div class="main_tit_l"> <span>案例展示 / </span> <span class="pro_tit">CASE</span> </div>
+      <div class="main_tit_r">
+        <div class="home_tit"> <span class="home">当前位置：</span>
+          <php> $breadcrumb = sp_get_breadcrumb($cat_id); </php>
+          <ul>
+            <li class="h"><a href="/">首页</a> </li>
+            <volist name="breadcrumb" id="vo">
+              <li><a href="{:leuu('list/index',array('id'=>$vo['term_id']))}">{$vo.name}</a></li>
+            </volist>
+            <li>{$name}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="width:1110px; margin:0px auto; overflow:hidden;">
+    <div id="example-one">
+      <ul class="nav">
+        <php> $caseLists = sp_sql_posts_paged_bycatid($cat_id,"order:post_date DESC;");</php>
+        <volist name="caseLists['posts']" id="vo">
+          <li class="nav-one"><a href="{:leuu('article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}">{$vo.post_title}</a></li>
+        </volist>
+      </ul>
+    </div>
+  </div>
+  <div class="main_case">
+    <div class="main_prj_box clearfix ">
+      <div class="prj_box clearfix">
+        <div class="prj_box_r">
+          <ul class="prj_list clearfix">
+            <volist name="caseLists['posts']" id="vo">
+              <li onclick="location='{:leuu('article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}'">
+                <div class="prj_left_image"> <img src="__TMPL__Public/assets/picture/coin.png" /> </div>
+                <div class="prj_text_box">
+                  <h5>{$vo.post_title}</h5>
+                </div>
+              </li>
+            </volist>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<tc_include file="Public:footer" />
 <!-- JavaScript -->
 <tc_include file="Public:scripts" />
 </body>

@@ -1,4 +1,4 @@
-<?php
-return array(
-    'ACCEPT' => '接 受'
+<?php
+return array(
+    'ACCEPT' => '接 受'
 );

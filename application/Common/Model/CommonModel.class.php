@@ -4,7 +4,7 @@
  * 公共模型
  */
 
-namespace Common\Model;
+namespace Common\Model;
 use Think\Model;
 
 class CommonModel extends Model {

@@ -1,87 +1,124 @@
 <!DOCTYPE html>
-	<html>
-	<head>
-		<title>搜索 {$site_name} </title>
-		<meta name="keywords" content="" />
-		<meta name="description" content="">
-		<tc_include file="Public:head" />
-	</head>
-<body class="">
+<html>
+<head>
+<title>搜索 {$site_name}</title>
+<meta name="keywords" content="{$seo_keywords}" />
+<meta name="description" content="{$seo_description}">
+<tc_include file="Public:head" />
+<link href="__TMPL__Public/assets/css/page.css" rel="stylesheet" type="text/css" />
+<style>
+.nodata{text-align: center;font-size: 14px;line-height: 180px;}
+</style>
+</head>
+<body>
 <tc_include file="Public:nav" />
-<div class="container tc-main">
-	<div class="row">
-		<div class="span9">
-			<div class="main-title">
-				<php>
-					$result=sp_sql_posts_paged_bykeyword($keyword,"",20);
-				</php>
-				<h3>'{$keyword}' 搜索结果 </h3>
-				<p>{$result['count']}条结果</p>
-			</div>
-			
-			<volist name="result['posts']" id="vo">
-			<php>
-				$smeta=json_decode($vo['smeta'], true);
-			</php>
-			
-			<div class="list-boxes">
-				<h2><a href="{:leuu('article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}">{$vo.post_title}</a></h2>
-				<p>{$vo.post_excerpt}</p>
-				<div>
-					<div class="pull-left">
-						<div class="list-actions">
-						<a href="javascript:;"><i class="fa fa-eye"></i><span>{$vo.post_hits}</span></a>
-						<a href="{:U('article/do_like',array('id'=>$vo['object_id']))}" class="js-count-btn"><i class="fa fa-thumbs-up"></i><span class="count">{$vo.post_like}</span></a>
-						<a href="{:U('user/favorite/do_favorite',array('id'=>$vo['object_id']))}" class="js-favorite-btn" data-title="{$vo.post_title}" data-url="{:U('portal/article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}" data-key="{:sp_get_favorite_key('posts',$vo['object_id'])}">
-							<i class="fa fa-star-o"></i>
-						</a>
-						</div>
-					</div>
-					<a class="btn btn-warning pull-right" href="{:leuu('article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}">查看更多</a>
-				</div>
-			</div>
-			</volist>
-		
-			<div class="pagination">
-					<ul>
-						{$result['page']}
-					</ul>
-			</div>
-
-		</div>
-		<div class="span3">
-			<div class="tc-box first-box">
-				<div class="headtitle">
-	          		<h2>分享</h2>
-	          	</div>
-	          	<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a></div>
-<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"32"},"share":{},"image":{"viewList":["weixin","tsina","qzone","tqq","renren"],"viewText":"分享到：","viewSize":"32"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["weixin","tsina","qzone","tqq","renren"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
-        	</div>
-        	
-        	<div class="tc-box">
-	        	<div class="headtitle">
-	        		<h2>热门文章</h2>
-	        	</div>
-	        	<div class="ranking">
-	        		<php>
-						$hot_articles=sp_sql_posts("cid:$portal_index_lastnews;field:post_title,post_excerpt,object_id,term_id,smeta;order:post_hits desc;limit:5;"); 
-					</php>
-		        	<ul class="unstyled">
-		        		<foreach name="hot_articles" item="vo">
-		        			<php>$top=$key<3?"top3":"";</php>
-							<li class="{$top}"><i>{$key+1}</i><a title="{$vo.post_title}" href="{:leuu('article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}">{$vo.post_title}</a></li>
-						</foreach>
-					</ul>
-				</div>
-			</div>
-        	
-		</div>
-		
-	</div>
-              
-<tc_include file="Public:footer"/>
+<div class="clear"></div>
+<div id="warp_main">
+    <php>
+$slides=sp_getslide("product_ads");
+</php>
+<div class="main_banner">
+<foreach name="slides" item="vo" key="k">
+	<if condition="$k == 0">
+    <img src="{:sp_get_asset_upload_path($vo['slide_pic'])}" alt="">
+    </if>
+</foreach>
 </div>
-
-<tc_include file="Public:scripts"/>
+  <div class="main_con_tit">
+    <div class="main_tit">
+      <div class="main_tit_l"> <span>产品中心 / </span><span class="pro_tit">PRODUCTS</span> </div>
+      <div class="main_tit_r">
+        <div class="home_tit"> <span class="home">当前位置：</span>
+          <ul>
+            <li class="h"><a href="/">首页</a> </li>
+            <li><a href="{:leuu('list/index',array('id'=>2))}">产品中心</a></li>
+            <li>搜索：{$keyword}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="width:1110px; margin:0px auto; overflow:hidden;">
+    <div id="example-one">
+      <ul class="nav">
+      	<php> 
+        $productLists = sp_sql_posts_paged_bycatid(2,"order:post_date DESC;"); 
+        $result=sp_sql_posts_paged_bykeyword($keyword,'cid:2;order:post_date DESC,listorder DESC;',20);
+        </php>
+    	<volist name="productLists['posts']" id="vo">
+        	<li class="nav-one"><a href="{:leuu('article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}">{$vo.post_title}</a></li>
+        </volist>
+      </ul>
+    </div>
+  </div>
+  <div class="main_pro">
+  <if condition="!empty($result['posts'])">
+  <volist name="result['posts']" id="vo" key="k">
+      <php> $smeta=json_decode($vo['smeta'], true); </php>
+      <if condition="$k%2 != 0">
+    <div class="main_pro_con">
+      <div class="pro_con_l clearfix">
+        <div class="pro_l_l"> 
+            <if condition="empty($smeta['thumb'])"> 
+                <img src="__TMPL__Public/images/default_tupian1.png" alt="{$vo.post_title}" width="303" height="208"/>
+            <else />
+                <img src="{:sp_get_asset_upload_path($smeta['thumb'])}" alt="{$vo.post_title}" width="303" height="208"/> 
+            </if>
+        </div>
+        <div class="pro_l_r"> 
+        <a href="{:leuu('article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}">
+          <h3>{$vo.post_title}</h3>
+          <p>{$vo.post_excerpt}</p>
+         </a>
+          <div class="pro_more">
+              <a href="{:leuu('article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}">
+              <img src="__TMPL__Public/assets/picture/arrow_new.png"/>
+              </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <else/>
+    	<div class="main_pro_con">
+          <div class="pro_con_l clearfix">
+            <div class="pro_l_txt"> 
+            <a href="{:leuu('article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}">
+              <h3>{$vo.post_title}</h3>
+              <p>{$vo.post_excerpt}</p>
+             </a>
+              <div class="pro_more">
+              	<a href="{:leuu('article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}">
+                  <img src="__TMPL__Public/assets/picture/arrow_new.png"/>
+                 </a>
+              </div>
+            </div>
+            <div class="pro_r_img">
+            	<if condition="empty($smeta['thumb'])"> 
+                <img src="__TMPL__Public/images/default_tupian1.png" alt="{$vo.post_title}" width="303" height="208"/>
+            	<else />
+                <img src="{:sp_get_asset_upload_path($smeta['thumb'])}" alt="{$vo.post_title}" width="303" height="208"/> 
+            	</if>
+            </div>
+          </div>
+        </div>
+    </if>
+    </volist>
+    <div class="pro_page">
+        <div class="pager_pro">
+          <ul>
+            {$result['page']}
+          </ul>
+        </div>
+  	</div>
+    <else/>
+    	<div class="nodata">
+        您输入的关键字搜索无结果！
+        </div>
+    </if>
+  </div>
+</div>
+<tc_include file="Public:footer" />
+<!-- JavaScript -->
+<tc_include file="Public:scripts" />
 </body>
 </html>

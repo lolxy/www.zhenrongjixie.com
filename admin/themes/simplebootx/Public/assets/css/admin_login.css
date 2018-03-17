@@ -9,7 +9,7 @@ $Id: admin_login.css 22060 2012-12-19 03:01:55Z yanchixia $
 html{
 	padding:0;
 	margin:0;
-	background:#1262B7;
+	background:#000000;
 }
 body {
 	padding:0;
@@ -17,7 +17,7 @@ body {
 	font-family:Arial, "Microsoft Yahei";
 }
 .wrap {
-	width: 250px;
+	width: 280px;
 	overflow:hidden;
 	margin: 180px auto 0;
 	-webkit-animation: bounceIn 600ms linear;
@@ -29,16 +29,18 @@ body {
 h1 a {
 	display: block;
 	height: 50px;
-	width: 250px;
+	width: 280px;
 	margin:auto;
 	overflow: hidden;
 	color:#fff;
-	font-size: 45px;
+	font-size: 30px;
     font-weight: normal;
     text-align: center;
     text-decoration: none;
     line-height: 50px;
 }
+
+.login{background: rgba(255,255,255,0.3);padding: 15px;border-radius:5px;}
 
 .login ul,
 .login li{
